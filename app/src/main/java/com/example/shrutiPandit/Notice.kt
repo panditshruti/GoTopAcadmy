@@ -1,10 +1,13 @@
 package com.example.shrutiPandit
 
-import NoticeAdapter
+import com.example.shrutiPandit.adapter.NoticeAdapterN
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.shrutiPandit.db.NoticeItem
+
 import com.example.shrutiPandit.databinding.ActivityNoticeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,7 +19,7 @@ class Notice : AppCompatActivity() {
     private lateinit var binding: ActivityNoticeBinding
     private lateinit var db: DatabaseReference
     private lateinit var arrayList: ArrayList<NoticeItem>
-    private lateinit var noticeAdapter: NoticeAdapter
+    private lateinit var noticeAdapter: NoticeAdapterN
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,14 +29,17 @@ class Notice : AppCompatActivity() {
 
         db = FirebaseDatabase.getInstance().reference.child("Notice")
         arrayList = arrayListOf()
-        fetchNotes()
 
-        noticeAdapter = NoticeAdapter(arrayList)
+
+
+
         binding.recyclerview.adapter = noticeAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
+        fetchNotice()
 
     }
-    private fun fetchNotes() {
+
+    private fun fetchNotice() {
         db.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -41,19 +47,28 @@ class Notice : AppCompatActivity() {
                     for (data in snapshot.children) {
                         val title = data.child("title").value as? String
                         val link = data.child("link").value as? String
-                        val image = data.child("uri").value as? String
-                        if (title != null && link != null && image != null) {
-                            arrayList.add(NoticeItem(image, title, link))
+                        val img = data.child("imageUrl").value as? String
+                        val pdf = data.child("pdfurl").value as? String
+                        val date = data.child("date").value as? String
 
-                        }
+                        Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
+
+
+                            arrayList.add(NoticeItem(img, pdf, title, link,date!!))
+
                     }
+
                     noticeAdapter.notifyDataSetChanged()
                 }
             }
 
+
             override fun onCancelled(error: DatabaseError) {
-                // Handle error if needed
+
             }
         })
     }
+
 }
+
+

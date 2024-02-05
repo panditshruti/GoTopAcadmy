@@ -10,13 +10,11 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.example.shrutiPandit.databinding.ActivityFormBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,107 +23,39 @@ class Form : AppCompatActivity() {
     private lateinit var binding: ActivityFormBinding
     private lateinit var spinner: Spinner
     private lateinit var database: DatabaseReference
-    private val pickImage =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            saveFileToDatabase(uri, "image")
-        }
-    private val pickImage2 =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            saveFileToDatabase2(uri, "image")
-        }
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        selectedImageUri = uri
+        isImageSelected = true
+        Picasso.get().load(uri).into(binding.imagechoose)
+    }
+
+    private val pickImage2 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        selectedImageUri2 = uri
+        isImageSelected2 = true
+        Picasso.get().load(uri).into(binding.sspay)
+    }
     private var selectedImageUri: Uri? = null
     private var isImageSelected = false
 
-  private var selectedImageUri2: Uri? = null
+    private var selectedImageUri2: Uri? = null
     private var isImageSelected2 = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         database = FirebaseDatabase.getInstance().getReference().child("Student Details")
 
         binding.imagechoose.setOnClickListener {
-            openFilePicker("image/*")
+            openFilePicker(1)
         }
         binding.sspay.setOnClickListener {
-            openFilePicker2("image/*")
+            openFilePicker(2)
         }
 
-
         binding.submitbtn.setOnClickListener {
-            val name = binding.name.text.toString()
-            val phone = binding.phone.text.toString()
-            val email = binding.email.text.toString()
-            val address = binding.address.text.toString()
-
-            val schoolExam = binding.schoolAcadmicExam.selectedItem.toString()
-            val sscExam = binding.ssc.selectedItem.toString()
-            val railwayExam = binding.railway.selectedItem.toString()
-            val defenseExam = binding.defence.selectedItem.toString()
-            val policeExam = binding.police.selectedItem.toString()
-            val civilservice = binding.cicilServices.selectedItem.toString()
-            val banking = binding.banking.selectedItem.toString()
-            val entrance = binding.entrance.selectedItem.toString()
-            val currentaffairs = binding.currentaffairs.selectedItem.toString()
-
-            if (selectedImageUri != null && isImageSelected && selectedImageUri2 != null && isImageSelected2 &&
-                name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()
-            ) {
-                val currentDate = SimpleDateFormat("yyyy_MM_dd", Locale.getDefault()).format(Date())
-                val entryKey = database.child(currentDate).push().key
-                entryKey?.let {
-                    // Save first image URI to Firebase
-                    database.child(currentDate).child(entryKey).child("type1").setValue("image")
-                    database.child(currentDate).child(entryKey).child("uri1").setValue(selectedImageUri.toString())
-
-                    // Save second image URI to Firebase
-                    database.child(currentDate).child(entryKey).child("type2").setValue("image")
-                    database.child(currentDate).child(entryKey).child("uri2").setValue(selectedImageUri2.toString())
-
-                    // Save other data to Firebase
-                    database.child(currentDate).child(entryKey).child("name").setValue(name)
-                    database.child(currentDate).child(entryKey).child("phone No-").setValue(phone)
-                    database.child(currentDate).child(entryKey).child("email").setValue(email)
-                    database.child(currentDate).child(entryKey).child("address").setValue(address)
-                    database.child(currentDate).child(entryKey).child("schoolExam").setValue(schoolExam)
-                    database.child(currentDate).child(entryKey).child("sscExam").setValue(sscExam)
-                    database.child(currentDate).child(entryKey).child("railwayExam").setValue(railwayExam)
-                    database.child(currentDate).child(entryKey).child("defenseExam").setValue(defenseExam)
-                    database.child(currentDate).child(entryKey).child("policeExam").setValue(policeExam)
-                    database.child(currentDate).child(entryKey).child("civilServices").setValue(civilservice)
-                    database.child(currentDate).child(entryKey).child("banking").setValue(banking)
-                    database.child(currentDate).child(entryKey).child("entrance").setValue(entrance)
-                    database.child(currentDate).child(entryKey).child("currentAffairs").setValue(currentaffairs)
-
-                    Toast.makeText(this, "Data Uploaded", Toast.LENGTH_SHORT).show()
-
-                    // Clear the input fields
-                    binding.name.text?.clear()
-                    binding.phone.text?.clear()
-                    binding.email.text?.clear()
-                    binding.address.text?.clear()
-
-                    // Clear selected image URIs
-                    selectedImageUri = null
-                    binding.imagechoose.setImageResource(R.drawable.ic_menu_gallery)
-                    isImageSelected = false
-
-                    selectedImageUri2 = null
-                    binding.sspay.setImageResource(R.drawable.ic_menu_gallery)
-                    isImageSelected2 = false
-                }
-            } else {
-                // Show error messages for empty fields or missing image
-                if (!isImageSelected || !isImageSelected2) {
-                    Toast.makeText(this, "Please choose both images", Toast.LENGTH_SHORT).show()
-                }
-                if (name.isEmpty()) binding.name.error = "Require Name"
-                if (phone.isEmpty()) binding.phone.error = "Require phone No-"
-                if (email.isEmpty()) binding.email.error = "Require Email I'd"
-                if (address.isEmpty()) binding.address.error = "Require Address"
-            }
+            saveFileToDatabase()
         }
 
         school()
@@ -139,9 +69,7 @@ class Form : AppCompatActivity() {
         currentAffairs()
     }
 
-
-
-    fun school(){
+    fun school() {
         spinner = binding.schoolAcadmicExam
         val schoolexam = arrayOf(
             "class 1",
@@ -162,9 +90,11 @@ class Form : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        binding.schoolAcadmicExam.onItemSelectedListener = object : AdapterView.OnItemSelectedListener { override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            val selectedCountry = schoolexam[position]
-        }
+        binding.schoolAcadmicExam.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedCountry = schoolexam[position]
+            }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
@@ -429,43 +359,115 @@ class Form : AppCompatActivity() {
 
     }
 
-
-    fun openFilePicker(mimeType: String) {
+    fun openFilePicker(requestCode: Int) {
+        val mimeType = "image/*"
         // Launch the file picker based on the MIME type
-        when (mimeType) {
-            "image/*" -> pickImage.launch(mimeType)
-            else -> throw IllegalArgumentException("Unsupported MIME type: $mimeType")
-        }
-    }
-    fun openFilePicker2(mimeType: String) {
-        // Launch the file picker based on the MIME type
-        when (mimeType) {
-            "image/*" -> pickImage2.launch(mimeType)  // Use pickImage2 instead of pickImage
-            else -> throw IllegalArgumentException("Unsupported MIME type: $mimeType")
+        when (requestCode) {
+            1 -> pickImage.launch(mimeType)
+            2 -> pickImage2.launch(mimeType)
+            else -> throw IllegalArgumentException("Unsupported request code: $requestCode")
         }
     }
 
-    fun saveFileToDatabase(uri: Uri?, fileType: String) {
+    private fun saveFileToDatabase() {
+        val name = binding.name.text.toString()
+        val phone = binding.phone.text.toString()
+        val email = binding.email.text.toString()
+        val address = binding.address.text.toString()
+
+        val schoolExam = binding.schoolAcadmicExam.selectedItem.toString()
+        val sscExam = binding.ssc.selectedItem.toString()
+        val railwayExam = binding.railway.selectedItem.toString()
+        val defenseExam = binding.defence.selectedItem.toString()
+        val policeExam = binding.police.selectedItem.toString()
+        val civilservice = binding.cicilServices.selectedItem.toString()
+        val banking = binding.banking.selectedItem.toString()
+        val entrance = binding.entrance.selectedItem.toString()
+        val currentaffairs = binding.currentaffairs.selectedItem.toString()
+
+        if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty()) {
+            // Show a required message if any text field is empty
+           binding.name.error = "Require Name"
+           binding.phone.error = "Require Phone-No."
+           binding.email.error = "Require email I'd"
+           binding.address.error = "Require Address"
+            return
+        }
+
+        if (selectedImageUri == null || !isImageSelected || selectedImageUri2 == null || !isImageSelected2) {
+            // Show a required message if any image is not selected
+            Toast.makeText(this, "Both images are required", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+
+        if (selectedImageUri != null && isImageSelected && selectedImageUri2 != null && isImageSelected2 &&
+            name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()
+        ) {
+            val currentDate = SimpleDateFormat("yyyy_MM_dd", Locale.getDefault()).format(Date())
+            val entryKey = database.child(currentDate).push().key
+
+            entryKey?.let {
+                database.child(currentDate).child(entryKey).child("name").setValue(name)
+                database.child(currentDate).child(entryKey).child("phone No-").setValue(phone)
+                database.child(currentDate).child(entryKey).child("email").setValue(email)
+                database.child(currentDate).child(entryKey).child("address").setValue(address)
+                database.child(currentDate).child(entryKey).child("schoolExam").setValue(schoolExam)
+                database.child(currentDate).child(entryKey).child("sscExam").setValue(sscExam)
+                database.child(currentDate).child(entryKey).child("railwayExam").setValue(railwayExam)
+                database.child(currentDate).child(entryKey).child("defenseExam").setValue(defenseExam)
+                database.child(currentDate).child(entryKey).child("policeExam").setValue(policeExam)
+                database.child(currentDate).child(entryKey).child("civilServices").setValue(civilservice)
+                database.child(currentDate).child(entryKey).child("banking").setValue(banking)
+                database.child(currentDate).child(entryKey).child("entrance").setValue(entrance)
+                database.child(currentDate).child(entryKey).child("currentAffairs").setValue(currentaffairs)
+
+                uploadImageToStorage(selectedImageUri, 1, currentDate, entryKey)
+
+                uploadImageToStorage(selectedImageUri2, 2, currentDate, entryKey)
+
+                binding.name.text?.clear()
+                binding.phone.text?.clear()
+                binding.email.text?.clear()
+                binding.address.text?.clear()
+
+                // Set default image to the image views
+                binding.imagechoose.setImageResource(R.drawable.ic_menu_gallery)
+                binding.sspay.setImageResource(R.drawable.ic_menu_gallery)
+
+                isImageSelected = false
+                isImageSelected2 = false
+
+
+                Toast.makeText(this, "data uploded", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+        }
+    }
+    private fun uploadImageToStorage(uri: Uri?, requestCode: Int, currentDate: String, entryKey: String) {
         uri?.let {
-            selectedImageUri = uri
-            isImageSelected = true  // Set the flag to indicate an image is selected
+            val storageReference =
+                FirebaseStorage.getInstance().reference.child("images/${System.currentTimeMillis()}_${requestCode}.jpg")
 
-            // Display the selected image
-            Glide.with(this@Form)
-                .load(uri)
-                .into(binding.imagechoose)
-        }
-    }
-    fun saveFileToDatabase2(uri: Uri?, fileType: String) {
-        uri?.let {
-            selectedImageUri2 = uri  // Use selectedImageUri2 instead of selectedImageUri
-            isImageSelected2 = true  // Set the flag to indicate the second image is selected
+            storageReference.putFile(uri)
+                .addOnSuccessListener { taskSnapshot ->
 
-            // Display the selected image for sspay
-            Glide.with(this@Form)
-                .load(uri)
-                .into(binding.sspay)
+                    storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
+                        saveImageUrlToDatabase(downloadUri.toString(), "image", requestCode, currentDate, entryKey)
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, "Image $requestCode Upload Failed: ${exception.message}", Toast.LENGTH_SHORT).show()
+
+                }
         }
     }
 
+    private fun saveImageUrlToDatabase(downloadUrl: String, fileType: String, requestCode: Int, currentDate: String, entryKey: String) {
+        val typeKey = "type$requestCode"
+        val uriKey = "uri$requestCode"
+        database.child(currentDate).child(entryKey).child(typeKey).setValue(fileType)
+        database.child(currentDate).child(entryKey).child(uriKey).setValue(downloadUrl)
+
+    }
 }

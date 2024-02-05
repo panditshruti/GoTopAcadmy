@@ -1,33 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-
-    <TextView
-        android:layout_width="wrap_content"
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:backgroundTint="#EDE9CE"
+    android:elevation="5dp"
+    app:cardCornerRadius="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:text="text"
-        android:textSize="20dp"
-        android:textColor="#8E0000"
-        />
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:layout_gravity="center"
+            android:text="text"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#8E0000"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/link"
-        android:text="link"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        />
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imagechoose"
-        android:src="@color/teal_700"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/link"
+            android:text="link"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/purple_700"
+            />
+
+        <ImageView
+            android:id="@+id/imageuser"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/img1"
+            />
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/idPDFView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:text="date"
+            android:layout_gravity="end"
+            android:textSize="13dp"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
+
+
 
 
 </LinearLayout>
