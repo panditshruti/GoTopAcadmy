@@ -13,7 +13,7 @@
     android:layout_gravity="center"
     android:backgroundTint="#EDE9CE"
     android:elevation="5dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="15dp"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_margin="5dp"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:textColor="#8E0000"
+            android:textColor="#CF0E00"
             />
 
         <TextView
@@ -52,10 +52,15 @@
             android:src="@drawable/img1"
             />
 
-        <com.github.barteksc.pdfviewer.PDFView
-            android:id="@+id/idPDFView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+       <ImageView
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_margin="10dp"
+           android:id="@+id/pdfOpen"
+           android:src="@drawable/baseline_picture_as_pdf_24"
+           android:layout_gravity="center"
+           />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +71,6 @@
             android:layout_margin="10dp"
             android:textColor="@color/black"
             />
-
 
     </LinearLayout>
 

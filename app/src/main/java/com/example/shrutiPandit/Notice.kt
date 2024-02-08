@@ -32,11 +32,10 @@ class Notice : AppCompatActivity() {
 
 
 
-
+        noticeAdapter = NoticeAdapterN(arrayList,this@Notice)
         binding.recyclerview.adapter = noticeAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
         fetchNotice()
-
     }
 
     private fun fetchNotice() {
@@ -48,7 +47,7 @@ class Notice : AppCompatActivity() {
                         val title = data.child("title").value as? String
                         val link = data.child("link").value as? String
                         val img = data.child("imageUrl").value as? String
-                        val pdf = data.child("pdfurl").value as? String
+                        val pdf = data.child("pdfUrl").value as? String
                         val date = data.child("date").value as? String
 
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")

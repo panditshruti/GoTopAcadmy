@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shrutiPandit.db.NoticeItem
 
+import com.example.shrutiPandit.databinding.ActivityNoticeBinding
 import com.example.shrutiPandit.databinding.ActivityResultBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,11 +33,12 @@ class Result : AppCompatActivity() {
 
 
 
+        noticeAdapter = NoticeAdapterN(arrayList,this@Result)
         binding.recyclerview.adapter = noticeAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
         fetchNotice()
-
     }
+
     private fun fetchNotice() {
         db.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -46,7 +48,7 @@ class Result : AppCompatActivity() {
                         val title = data.child("title").value as? String
                         val link = data.child("link").value as? String
                         val img = data.child("imageUrl").value as? String
-                        val pdf = data.child("pdfurl").value as? String
+                        val pdf = data.child("pdfUrl").value as? String
                         val date = data.child("date").value as? String
 
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")

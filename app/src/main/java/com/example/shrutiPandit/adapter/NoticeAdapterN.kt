@@ -1,19 +1,24 @@
 package com.example.shrutiPandit.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shrutiPandit.PdfViewActivity
 import com.example.shrutiPandit.db.NoticeItem
 import com.example.shrutiPandit.R
 import com.github.barteksc.pdfviewer.PDFView
 import com.squareup.picasso.Picasso
 
-class NoticeAdapterN(
-    private  var  noticeList: ArrayList<NoticeItem>
+ class NoticeAdapterN(
+    private var noticeList: ArrayList<NoticeItem>,private var context: Context
 ) : RecyclerView.Adapter<NoticeAdapterN.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -21,7 +26,7 @@ class NoticeAdapterN(
         val link: TextView = itemView.findViewById(R.id.link)
         val images: ImageView = itemView.findViewById(R.id.imageuser)
         val date: TextView = itemView.findViewById(R.id.date)
-        val pdfview: PDFView = itemView.findViewById(R.id.idPDFView)
+        val openPdf: ImageView = itemView.findViewById(R.id.pdfOpen)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -57,10 +62,16 @@ class NoticeAdapterN(
         }
 
         if (notice.pdf != "") {
-            // Load PDF using PDFView library
-            holder.pdfview.fromUri(Uri.parse(notice.pdf)).load()
+       holder.openPdf.setOnClickListener {
+           val intent = Intent(context, PdfViewActivity::class.java)
+            intent.putExtra("PDF",notice.pdf)
+           context.startActivity(intent)
+
+
+       }
         } else {
-            holder.pdfview.visibility = View.GONE
+            holder.openPdf.visibility = View.GONE
+
         }
 
     }
