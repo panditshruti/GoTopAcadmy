@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shrutiPandit.db.NoticeItem
-
-import com.example.shrutiPandit.databinding.ActivityNoticeBinding
 import com.example.shrutiPandit.databinding.ActivityResultBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

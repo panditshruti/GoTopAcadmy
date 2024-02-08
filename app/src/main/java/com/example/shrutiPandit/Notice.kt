@@ -1,3 +1,4 @@
+
 package com.example.shrutiPandit
 
 import com.example.shrutiPandit.adapter.NoticeAdapterN
@@ -53,7 +54,7 @@ class Notice : AppCompatActivity() {
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
 
-                            arrayList.add(NoticeItem(img, pdf, title, link,date!!))
+                        arrayList.add(NoticeItem(img, pdf, title, link,date!!))
 
                     }
 
@@ -69,5 +70,3 @@ class Notice : AppCompatActivity() {
     }
 
 }
-
-
