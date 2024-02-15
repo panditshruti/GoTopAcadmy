@@ -1,6 +1,7 @@
 package com.example.shrutiPandit
 
-import com.example.shrutiPandit.adapter.NoticeAdapterN
+
+import NoticeAdapterN
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

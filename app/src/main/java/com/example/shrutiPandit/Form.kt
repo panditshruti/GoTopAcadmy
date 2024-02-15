@@ -1,6 +1,10 @@
 package com.example.shrutiPandit
 
 import android.R
+import android.app.ProgressDialog
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -14,12 +18,23 @@ import com.example.shrutiPandit.databinding.ActivityFormBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.DecodeHintType
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.common.HybridBinarizer
+import com.google.zxing.integration.android.IntentIntegrator
+import com.journeyapps.barcodescanner.DecoratedBarcodeView
+import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment
+import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener
+import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.EnumSet
 import java.util.Locale
 
-class Form : AppCompatActivity() {
+class Form : AppCompatActivity() ,PaymentStatusListener{
     private lateinit var binding: ActivityFormBinding
     private lateinit var spinner: Spinner
     private lateinit var database: DatabaseReference
@@ -29,7 +44,6 @@ class Form : AppCompatActivity() {
         isImageSelected = true
         Picasso.get().load(uri).into(binding.imagechoose)
     }
-
     private val pickImage2 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         selectedImageUri2 = uri
         isImageSelected2 = true
@@ -37,9 +51,10 @@ class Form : AppCompatActivity() {
     }
     private var selectedImageUri: Uri? = null
     private var isImageSelected = false
-
     private var selectedImageUri2: Uri? = null
     private var isImageSelected2 = false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +68,13 @@ class Form : AppCompatActivity() {
         binding.sspay.setOnClickListener {
             openFilePicker(2)
         }
-
         binding.submitbtn.setOnClickListener {
             saveFileToDatabase()
+        }
+
+        binding.qrcode.setOnClickListener {
+         paymentMode()
+
         }
 
         school()
@@ -67,8 +86,8 @@ class Form : AppCompatActivity() {
         banking()
         entrance()
         currentAffairs()
-    }
 
+    }
     fun school() {
         spinner = binding.schoolAcadmicExam
         val schoolexam = arrayOf(
@@ -84,6 +103,7 @@ class Form : AppCompatActivity() {
             "class 10",
             "class 11",
             "class 12",
+            "None"
         )
 
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_dropdown_item, schoolexam)
@@ -385,12 +405,13 @@ class Form : AppCompatActivity() {
         val entrance = binding.entrance.selectedItem.toString()
         val currentaffairs = binding.currentaffairs.selectedItem.toString()
 
+
         if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty()) {
             // Show a required message if any text field is empty
-           binding.name.error = "Require Name"
-           binding.phone.error = "Require Phone-No."
-           binding.email.error = "Require email I'd"
-           binding.address.error = "Require Address"
+            binding.name.error = "Require Name"
+            binding.phone.error = "Require Phone-No."
+            binding.email.error = "Require email I'd"
+            binding.address.error = "Require Address"
             return
         }
 
@@ -405,26 +426,27 @@ class Form : AppCompatActivity() {
             name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()
         ) {
             val currentDate = SimpleDateFormat("yyyy_MM_dd", Locale.getDefault()).format(Date())
-            val entryKey = database.child(currentDate).push().key
+            val entryKey = database.push().key
 
             entryKey?.let {
-                database.child(currentDate).child(entryKey).child("name").setValue(name)
-                database.child(currentDate).child(entryKey).child("phone No-").setValue(phone)
-                database.child(currentDate).child(entryKey).child("email").setValue(email)
-                database.child(currentDate).child(entryKey).child("address").setValue(address)
-                database.child(currentDate).child(entryKey).child("schoolExam").setValue(schoolExam)
-                database.child(currentDate).child(entryKey).child("sscExam").setValue(sscExam)
-                database.child(currentDate).child(entryKey).child("railwayExam").setValue(railwayExam)
-                database.child(currentDate).child(entryKey).child("defenseExam").setValue(defenseExam)
-                database.child(currentDate).child(entryKey).child("policeExam").setValue(policeExam)
-                database.child(currentDate).child(entryKey).child("civilServices").setValue(civilservice)
-                database.child(currentDate).child(entryKey).child("banking").setValue(banking)
-                database.child(currentDate).child(entryKey).child("entrance").setValue(entrance)
-                database.child(currentDate).child(entryKey).child("currentAffairs").setValue(currentaffairs)
+                database.child(entryKey).child("name").setValue(name)
+                database.child(entryKey).child("phone No-").setValue(phone)
+                database.child(entryKey).child("email").setValue(email)
+                database.child(entryKey).child("address").setValue(address)
+                database.child(entryKey).child("schoolExam").setValue(schoolExam)
+                database.child(entryKey).child("sscExam").setValue(sscExam)
+                database.child(entryKey).child("railwayExam").setValue(railwayExam)
+                database.child(entryKey).child("defenseExam").setValue(defenseExam)
+                database.child(entryKey).child("policeExam").setValue(policeExam)
+                database.child(entryKey).child("civilServices").setValue(civilservice)
+                database.child(entryKey).child("banking").setValue(banking)
+                database.child(entryKey).child("entrance").setValue(entrance)
+                database.child(entryKey).child("currentAffairs").setValue(currentaffairs)
+                database.child(entryKey).child("CurrentDate").setValue(currentDate)
 
-                uploadImageToStorage(selectedImageUri, 1, currentDate, entryKey)
+                uploadImageToStorage(selectedImageUri, 1,  entryKey)
 
-                uploadImageToStorage(selectedImageUri2, 2, currentDate, entryKey)
+                uploadImageToStorage(selectedImageUri2, 2, entryKey)
 
                 binding.name.text?.clear()
                 binding.phone.text?.clear()
@@ -444,16 +466,15 @@ class Form : AppCompatActivity() {
         } else {
         }
     }
-    private fun uploadImageToStorage(uri: Uri?, requestCode: Int, currentDate: String, entryKey: String) {
+    private fun uploadImageToStorage(uri: Uri?, requestCode: Int, entryKey: String) {
         uri?.let {
             val storageReference =
                 FirebaseStorage.getInstance().reference.child("images/${System.currentTimeMillis()}_${requestCode}.jpg")
 
             storageReference.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
-
                     storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
-                        saveImageUrlToDatabase(downloadUri.toString(), "image", requestCode, currentDate, entryKey)
+                        saveImageUrlToDatabase(downloadUri.toString(), requestCode, entryKey)
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -463,11 +484,74 @@ class Form : AppCompatActivity() {
         }
     }
 
-    private fun saveImageUrlToDatabase(downloadUrl: String, fileType: String, requestCode: Int, currentDate: String, entryKey: String) {
-        val typeKey = "type$requestCode"
+    private fun saveImageUrlToDatabase(downloadUrl: String, requestCode: Int, entryKey: String) {
         val uriKey = "uri$requestCode"
-        database.child(currentDate).child(entryKey).child(typeKey).setValue(fileType)
-        database.child(currentDate).child(entryKey).child(uriKey).setValue(downloadUrl)
+        database.child(entryKey).child(uriKey).setValue(downloadUrl)
 
     }
+
+    private fun paymentMode() {
+        val easyUpiPayment = EasyUpiPayment.Builder()
+            .setPayeeVpa("7739717389@upi")
+            .setPayeeName("Shruti")
+            .setDescription(binding.dis.text.toString())
+            .setAmount(binding.amount.text.toString())
+            .setTransactionId("12345567890")
+            .setTransactionRefId("12345567890")
+            .build()
+
+        // Set the payment status listener
+        easyUpiPayment.setPaymentStatusListener(this)
+
+        // Call startPayment after setting the payment status listener
+        easyUpiPayment.startPayment()
+    }
+
+    override fun onTransactionCompleted(transactionDetails: TransactionDetails?) {
+        // Handle transaction completion
+//        if (transactionDetails != null) {
+//            when (transactionDetails.transactionStatus) {
+//                TransactionStatus.SUCCESS -> {
+//                    // Payment successful
+//                    Toast.makeText(this, "Transaction Successful", Toast.LENGTH_SHORT).show()
+//                }
+//                TransactionStatus.FAILURE -> {
+//                    // Payment failed
+//                    Toast.makeText(this, "Transaction Failed", Toast.LENGTH_SHORT).show()
+//                }
+//                TransactionStatus.SUBMITTED -> {
+//                    // Payment submitted, waiting for confirmation
+//                    Toast.makeText(this, "Transaction Submitted", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        } else {
+//            // Handle null transactionDetails
+//            Toast.makeText(this, "Transaction Details Null", Toast.LENGTH_SHORT).show()
+//        }
+    }
+
+    override fun onTransactionSuccess() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTransactionSubmitted() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTransactionFailed() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTransactionCancelled() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAppNotFound() {
+        TODO("Not yet implemented")
+    }
+
+
+
+// Implement other methods as needed...
+
 }

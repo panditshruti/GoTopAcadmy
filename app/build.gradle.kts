@@ -58,6 +58,14 @@ dependencies {
 
     implementation("com.squareup.picasso:picasso:2.8")
 
+    implementation("com.google.zxing:core:3.4.0")
+    implementation ("com.journeyapps:zxing-android-embedded:3.6.0")
+
+    implementation("com.shreyaspatil:EasyUpiPayment:2.0")
+
+    implementation ("com.github.MikeOrtiz:TouchImageView:1.4.1")
+
+
 
 
 

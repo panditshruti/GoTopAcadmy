@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        tools:ignore="MissingClass">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,14 +43,13 @@
             android:textColor="@color/purple_700"
             />
 
-        <ImageView
+        <com.ortiz.touchview.TouchImageView
             android:id="@+id/imageuser"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
             android:src="@drawable/img1"
-            />
+            android:layout_margin="10dp"
+            android:layout_height="400dp"
+          />
 
        <ImageView
            android:layout_width="40dp"

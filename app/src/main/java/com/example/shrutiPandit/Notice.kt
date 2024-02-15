@@ -1,15 +1,18 @@
-
 package com.example.shrutiPandit
 
-import com.example.shrutiPandit.adapter.NoticeAdapterN
+
+import NoticeAdapterN
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.shrutiPandit.db.NoticeItem
 
 import com.example.shrutiPandit.databinding.ActivityNoticeBinding
+import com.example.shrutiPandit.db.NoticeItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -22,7 +25,7 @@ class Notice : AppCompatActivity() {
     private lateinit var arrayList: ArrayList<NoticeItem>
     private lateinit var noticeAdapter: NoticeAdapterN
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNoticeBinding.inflate(layoutInflater)
@@ -31,16 +34,17 @@ class Notice : AppCompatActivity() {
         db = FirebaseDatabase.getInstance().reference.child("Notice")
         arrayList = arrayListOf()
 
-
-
-        noticeAdapter = NoticeAdapterN(arrayList,this@Notice)
+        noticeAdapter = NoticeAdapterN(arrayList, this@Notice)
         binding.recyclerview.adapter = noticeAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
         fetchNotice()
+
+
     }
 
     private fun fetchNotice() {
         db.addValueEventListener(object : ValueEventListener {
+            @RequiresApi(Build.VERSION_CODES.O)
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -53,8 +57,8 @@ class Notice : AppCompatActivity() {
 
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
+                        arrayList.add(NoticeItem(img, pdf, title, link, date!!))
 
-                        arrayList.add(NoticeItem(img, pdf, title, link,date!!))
 
                     }
 
@@ -62,11 +66,11 @@ class Notice : AppCompatActivity() {
                 }
             }
 
-
             override fun onCancelled(error: DatabaseError) {
-
+                // Handle onCancelled
             }
         })
     }
+
 
 }
