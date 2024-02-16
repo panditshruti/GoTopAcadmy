@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GoTop"
+                android:text="@string/gotop"
                 android:textColor="#E30000"
                 android:textSize="17dp"
                 android:textStyle="bold" />
@@ -114,7 +114,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="Form fill"
+                            android:text="@string/form_fill"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -155,7 +155,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="Result"
+                            android:text="@string/result"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -193,8 +193,7 @@
                             android:layout_height="130dp"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:padding="10dp"
-                            android:src="@drawable/profile" />
+                            android:src="@drawable/notis" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -202,7 +201,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="Notice"
+                            android:text="@string/notice"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -240,7 +239,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="About"
+                            android:text="@string/about"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold" />

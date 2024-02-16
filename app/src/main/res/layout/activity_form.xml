@@ -10,7 +10,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_gravity="center"
-       android:text="Registration Form"
+       android:text="@string/registration_form"
        android:textStyle="bold"
        android:textColor="#D30048"
        android:layout_margin="5dp"
@@ -60,7 +60,7 @@
           android:layout_width="match_parent"
           android:drawableEnd="@drawable/baseline_person_24"
           android:layout_height="wrap_content"
-          android:hint="Enter your Name"
+          android:hint="@string/enter_your_name"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
   <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +99,7 @@
           android:layout_width="match_parent"
           android:drawableEnd="@drawable/baseline_email_24"
           android:layout_height="wrap_content"
-          android:hint="Enter Your Email  I'd"
+          android:hint="@string/enter_your_email_i_d"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
   <com.google.android.material.textfield.TextInputLayout
@@ -118,7 +118,7 @@
           android:layout_width="match_parent"
           android:drawableEnd="@drawable/baseline_add_location_alt_24"
           android:layout_height="wrap_content"
-          android:hint="Enter your Address"
+          android:hint="@string/enter_your_address"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,7 +126,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="School Academic Exams"
+             android:text="@string/school_academic_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -143,7 +143,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="center"
-             android:text="General Competition"
+             android:text="@string/general_competition"
              android:textStyle="bold"
              android:textColor="#D30048"
              android:layout_margin="5dp"
@@ -153,7 +153,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="SSC Exams"
+             android:text="@string/ssc_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -172,7 +172,7 @@
               android:layout_height="wrap_content"
               android:layout_gravity="end"
               android:layout_margin="5dp"
-              android:text="Railway Exams"
+              android:text="@string/railway_exams"
               android:textColor="#0D91FA"
               android:textSize="14dp"
               android:textStyle="bold" />
@@ -188,7 +188,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="Defence"
+             android:text="@string/defence"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -205,7 +205,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="Police Exams"
+             android:text="@string/police_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -223,7 +223,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="civil Services Exams"
+             android:text="@string/civil_services_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -241,7 +241,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="Banking Exams"
+             android:text="@string/banking_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -259,7 +259,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="Entrance Exams"
+             android:text="@string/entrance_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -276,7 +276,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="end"
-             android:text="Current Affairs Exams"
+             android:text="@string/current_affairs_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
@@ -299,74 +299,12 @@
               android:layout_margin="5dp"
               android:textSize="14dp"
               />
-
-          <EditText
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:hint="discription"
-              android:id="@+id/dis"
-              />
-
-          <EditText
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/amount"
-              android:hint="amoubt"
-              />
-
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_margin="10dp"
-              android:orientation="horizontal"
-              >
-
-
-
-
-          <ImageView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/qrcode"
-              android:src="@drawable/codeqr"
-            />
-
-              <TextView
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:textStyle="bold"
-                  android:textColor="#ED0051"
-                  android:text="       Pay 10 rupees but \n      50% Discount \n      so you pay only 5 rupees"
-                  android:layout_margin="10dp"
-                  android:textSize="14dp"
-                  />
-
-          </LinearLayout>
-          <ImageView
-              android:layout_width="200dp"
-              android:layout_height="200dp"
-              android:layout_gravity="center"
-              android:id="@+id/sspay"
-              android:background="@color/black"
-              />
-
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="end"
-              android:textStyle="bold"
-              android:textColor="#0D91FA"
-              android:layout_margin="5dp"
-              android:textSize="14dp"
-              />
+/
 
           <androidx.appcompat.widget.AppCompatButton
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textStyle="bold"
               android:id="@+id/submitbtn"
             android:textColor="@color/white"

@@ -1,5 +1,6 @@
 package com.example.shrutiPandit
 
+import android.annotation.SuppressLint
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -27,8 +28,10 @@ class PdfViewActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private inner class LoadPdfAsyncTask : AsyncTask<String, Void, BufferedInputStream?>() {
 
+        @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: String?): BufferedInputStream? {
             try {
                 val url = URL(params[0])
@@ -41,6 +44,7 @@ class PdfViewActivity : AppCompatActivity() {
             }
         }
 
+        @Deprecated("Deprecated in Java")
         override fun onPostExecute(result: BufferedInputStream?) {
             if (result != null) {
                 loadPdf(result)

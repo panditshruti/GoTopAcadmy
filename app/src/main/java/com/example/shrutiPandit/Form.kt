@@ -1,10 +1,7 @@
 package com.example.shrutiPandit
 
 import android.R
-import android.app.ProgressDialog
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -18,23 +15,12 @@ import com.example.shrutiPandit.databinding.ActivityFormBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.DecodeHintType
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.common.HybridBinarizer
-import com.google.zxing.integration.android.IntentIntegrator
-import com.journeyapps.barcodescanner.DecoratedBarcodeView
-import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment
-import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener
-import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.EnumSet
 import java.util.Locale
 
-class Form : AppCompatActivity() ,PaymentStatusListener{
+class Form : AppCompatActivity(){
     private lateinit var binding: ActivityFormBinding
     private lateinit var spinner: Spinner
     private lateinit var database: DatabaseReference
@@ -44,15 +30,9 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         isImageSelected = true
         Picasso.get().load(uri).into(binding.imagechoose)
     }
-    private val pickImage2 = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        selectedImageUri2 = uri
-        isImageSelected2 = true
-        Picasso.get().load(uri).into(binding.sspay)
-    }
     private var selectedImageUri: Uri? = null
     private var isImageSelected = false
-    private var selectedImageUri2: Uri? = null
-    private var isImageSelected2 = false
+
 
 
 
@@ -60,27 +40,20 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         super.onCreate(savedInstanceState)
         binding = ActivityFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        database = FirebaseDatabase.getInstance().getReference().child("Student Details")
+        database = FirebaseDatabase.getInstance().reference.child("Student Details")
 
         binding.imagechoose.setOnClickListener {
             openFilePicker(1)
-        }
-        binding.sspay.setOnClickListener {
-            openFilePicker(2)
         }
         binding.submitbtn.setOnClickListener {
             saveFileToDatabase()
         }
 
-        binding.qrcode.setOnClickListener {
-         paymentMode()
-
-        }
 
         school()
         ssc()
         railway()
-        defance()
+        deface()
         police()
         civilService()
         banking()
@@ -88,7 +61,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         currentAffairs()
 
     }
-    fun school() {
+    private fun school() {
         spinner = binding.schoolAcadmicExam
         val schoolexam = arrayOf(
             "class 1",
@@ -119,10 +92,10 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
             }
         }
     }
-    fun ssc(){
+    private fun ssc(){
         spinner = binding.ssc
         val ssc = arrayOf(
-            "SSC GD Cinstable",
+            "SSC GD Constable",
             "SSC CGL",
             "SSC CHSL",
             "SSC MTS",
@@ -144,7 +117,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun railway(){
+    private  fun railway(){
         spinner = binding.railway
         val railway = arrayOf(
             "RRB Group D",
@@ -170,7 +143,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun defance(){
+    private  fun deface(){
         spinner = binding.defence
         val defance = arrayOf(
             "Indian Army GD Agniveer",
@@ -224,7 +197,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun police(){
+    private fun police(){
         spinner = binding.police
         val police = arrayOf(
             "Bihar Police SI",
@@ -266,7 +239,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun civilService(){
+    private fun civilService(){
         spinner = binding.cicilServices
         val civilService = arrayOf(
             "UPSE Civil Services",
@@ -298,7 +271,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun banking(){
+    private fun banking(){
         spinner = binding.banking
         val banking = arrayOf(
             "SBI PO",
@@ -323,7 +296,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun entrance(){
+      private  fun entrance(){
         spinner = binding.entrance
         val entrance = arrayOf(
             "Bihar D.EL.ED",
@@ -355,7 +328,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
         }
 
     }
-    fun currentAffairs(){
+    private fun currentAffairs(){
         spinner = binding.currentaffairs
         val currentaffairs = arrayOf(
             "Annual Current Affairs",
@@ -379,12 +352,10 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
 
     }
 
-    fun openFilePicker(requestCode: Int) {
+    private fun openFilePicker(requestCode: Int) {
         val mimeType = "image/*"
-        // Launch the file picker based on the MIME type
         when (requestCode) {
             1 -> pickImage.launch(mimeType)
-            2 -> pickImage2.launch(mimeType)
             else -> throw IllegalArgumentException("Unsupported request code: $requestCode")
         }
     }
@@ -415,14 +386,14 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
             return
         }
 
-        if (selectedImageUri == null || !isImageSelected || selectedImageUri2 == null || !isImageSelected2) {
+        if (selectedImageUri == null || !isImageSelected ) {
             // Show a required message if any image is not selected
             Toast.makeText(this, "Both images are required", Toast.LENGTH_SHORT).show()
             return
         }
 
 
-        if (selectedImageUri != null && isImageSelected && selectedImageUri2 != null && isImageSelected2 &&
+        if (selectedImageUri != null && isImageSelected  &&
             name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()
         ) {
             val currentDate = SimpleDateFormat("yyyy_MM_dd", Locale.getDefault()).format(Date())
@@ -446,22 +417,20 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
 
                 uploadImageToStorage(selectedImageUri, 1,  entryKey)
 
-                uploadImageToStorage(selectedImageUri2, 2, entryKey)
 
                 binding.name.text?.clear()
                 binding.phone.text?.clear()
                 binding.email.text?.clear()
                 binding.address.text?.clear()
 
-                // Set default image to the image views
+
                 binding.imagechoose.setImageResource(R.drawable.ic_menu_gallery)
-                binding.sspay.setImageResource(R.drawable.ic_menu_gallery)
 
                 isImageSelected = false
-                isImageSelected2 = false
 
 
-                Toast.makeText(this, "data uploded", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(this, "data Uploded", Toast.LENGTH_SHORT).show()
             }
         } else {
         }
@@ -472,7 +441,7 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
                 FirebaseStorage.getInstance().reference.child("images/${System.currentTimeMillis()}_${requestCode}.jpg")
 
             storageReference.putFile(uri)
-                .addOnSuccessListener { taskSnapshot ->
+                .addOnSuccessListener {
                     storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
                         saveImageUrlToDatabase(downloadUri.toString(), requestCode, entryKey)
                     }
@@ -490,68 +459,5 @@ class Form : AppCompatActivity() ,PaymentStatusListener{
 
     }
 
-    private fun paymentMode() {
-        val easyUpiPayment = EasyUpiPayment.Builder()
-            .setPayeeVpa("7739717389@upi")
-            .setPayeeName("Shruti")
-            .setDescription(binding.dis.text.toString())
-            .setAmount(binding.amount.text.toString())
-            .setTransactionId("12345567890")
-            .setTransactionRefId("12345567890")
-            .build()
-
-        // Set the payment status listener
-        easyUpiPayment.setPaymentStatusListener(this)
-
-        // Call startPayment after setting the payment status listener
-        easyUpiPayment.startPayment()
-    }
-
-    override fun onTransactionCompleted(transactionDetails: TransactionDetails?) {
-        // Handle transaction completion
-//        if (transactionDetails != null) {
-//            when (transactionDetails.transactionStatus) {
-//                TransactionStatus.SUCCESS -> {
-//                    // Payment successful
-//                    Toast.makeText(this, "Transaction Successful", Toast.LENGTH_SHORT).show()
-//                }
-//                TransactionStatus.FAILURE -> {
-//                    // Payment failed
-//                    Toast.makeText(this, "Transaction Failed", Toast.LENGTH_SHORT).show()
-//                }
-//                TransactionStatus.SUBMITTED -> {
-//                    // Payment submitted, waiting for confirmation
-//                    Toast.makeText(this, "Transaction Submitted", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        } else {
-//            // Handle null transactionDetails
-//            Toast.makeText(this, "Transaction Details Null", Toast.LENGTH_SHORT).show()
-//        }
-    }
-
-    override fun onTransactionSuccess() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onTransactionSubmitted() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onTransactionFailed() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onTransactionCancelled() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onAppNotFound() {
-        TODO("Not yet implemented")
-    }
-
-
-
-// Implement other methods as needed...
 
 }

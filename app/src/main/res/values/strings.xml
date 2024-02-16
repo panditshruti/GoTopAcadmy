@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">GoTop Academy</string>
+    <string name="registration_form">Registration Form</string>
+    <string name="enter_your_name">Enter your Name</string>
+    <string name="enter_your_email_i_d">Enter Your Email I\'d</string>
+    <string name="enter_your_address">Enter your Address</string>
+    <string name="school_academic_exams">School Academic Exams</string>
+    <string name="general_competition">General Competition</string>
+    <string name="ssc_exams">SSC Exams</string>
+    <string name="railway_exams">Railway Exams</string>
+    <string name="defence">Defence</string>
+    <string name="police_exams">Police Exams</string>
+    <string name="civil_services_exams">civil Services Exams</string>
+    <string name="banking_exams">Banking Exams</string>
+    <string name="entrance_exams">Entrance Exams</string>
+    <string name="current_affairs_exams">Current Affairs Exams</string>
+    <string name="submit">Submit</string>
+    <string name="about">About</string>
+    <string name="notice">Notice</string>
+    <string name="result">Result</string>
+    <string name="form_fill">Form fill</string>
+    <string name="gotop">GoTop</string>
+    <string name="text">text</string>
+    <string name="link">link</string>
+    <string name="date">date</string>
 </resources>

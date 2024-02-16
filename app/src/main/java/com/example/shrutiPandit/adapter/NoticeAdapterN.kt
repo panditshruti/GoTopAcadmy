@@ -17,12 +17,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shrutiPandit.PdfViewActivity
 import com.example.shrutiPandit.R
 import com.example.shrutiPandit.db.NoticeItem
 import com.ortiz.touchview.TouchImageView
 import com.squareup.picasso.Picasso
+
+
+const val CHANNEL_ID = "channelId "
 
 class NoticeAdapterN(
     private var noticeList: ArrayList<NoticeItem>,
@@ -86,70 +90,62 @@ class NoticeAdapterN(
                 val intent = Intent(context, PdfViewActivity::class.java)
                 intent.putExtra("PDF", notice.pdf)
                 context.startActivity(intent)
-                 updateData(noticeList)
+
             }
+
         } else {
             holder.openPdf.visibility = View.GONE
         }
-
+//        createNotificationChannel()
 
     }
 
     override fun getItemCount(): Int {
         return noticeList.size
     }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun updateData(newNoticeList: ArrayList<NoticeItem>) {
-        // Update your data and notify the adapter
-        noticeList.clear()
-        noticeList.addAll(newNoticeList)
-        notifyDataSetChanged()
-
-        // Display a notification for the newly fetched data
-        if (newNoticeList.isNotEmpty()) {
-            val latestNotice = newNoticeList[0] // Assuming the latest notice is at index 0
-            latestNotice.title?.let {
-                sendNotification("New Notice", it, "your_channel_id", Intent())
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun sendNotification(title: String, message: String, channelId: String, intent: Intent) {
-        val pendingIntent = PendingIntent.getActivity(
-            context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT
-        )
-
-        val channel = NotificationChannel(
-            channelId,
-            "Channel Name",
-            NotificationManager.IMPORTANCE_DEFAULT
-        ).apply {
-            description = "Channel Description"
-        }
-
-        val notificationManager: NotificationManager =
-            context.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
-
-        val builder = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_foreground) // Use your own icon
-            .setContentTitle(title)
-            .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-
-        with(NotificationManagerCompat.from(context)) {
-            if (ActivityCompat.checkSelfPermission(
-                    context,
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                return
-            }
-            notify(1, builder.build())
-        }
-    }
+//    fun updateData(newNoticeList: ArrayList<NoticeItem>) {
+//        // Update your data and notify the adapter
+//        noticeList.clear()
+//        noticeList.addAll(newNoticeList)
+//        notifyDataSetChanged()
+//
+//        // Display a notification for the newly fetched data
+//        if (newNoticeList.isNotEmpty()) {
+//            val latestNotice = newNoticeList[0] // Assuming the latest notice is at index 0
+//            latestNotice.title?.let {
+//                notification()
+//            }
+//        }
+//    }
+//
+//    private fun notification() {
+//        var builder = NotificationCompat.Builder(context, CHANNEL_ID)
+//        builder.setSmallIcon(R.drawable.ic_launcher_foreground)
+//            .setContentTitle("New Notice")
+//            .setContentText("A new notice is available.")
+//            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//
+//        with(NotificationManagerCompat.from(context)) {
+//            if (ActivityCompat.checkSelfPermission(
+//                    context,
+//                    Manifest.permission.POST_NOTIFICATIONS
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
+//                return
+//            }
+//            notify(1, builder.build())
+//        }
+//    }
+//
+//    private fun createNotificationChannel() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            val channel =
+//                NotificationChannel(CHANNEL_ID, "First channel", NotificationManager.IMPORTANCE_DEFAULT)
+//            channel.description = "Test description for my channel"
+//
+//            val notificationManager =
+//                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//            notificationManager.createNotificationChannel(channel)
+//        }
+//    }
 }
