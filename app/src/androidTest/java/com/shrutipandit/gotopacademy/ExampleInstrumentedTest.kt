@@ -1,4 +1,4 @@
-package com.example.shrutiPandit
+package com.shrutipandit.gotopacademy
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

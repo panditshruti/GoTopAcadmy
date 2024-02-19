@@ -12,7 +12,7 @@
        android:layout_gravity="center"
        android:text="@string/registration_form"
        android:textStyle="bold"
-       android:textColor="#D30048"
+       android:textColor="#855104"
        android:layout_margin="5dp"
        android:textSize="18dp"
        />
@@ -36,10 +36,17 @@
           android:layout_height="wrap_content"
           android:orientation="vertical"
           >
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/uplode_current_photo"
+              android:layout_gravity="center"
+              android:layout_margin="5dp"
+              />
           <de.hdodenhof.circleimageview.CircleImageView
               android:layout_width="150dp"
               android:layout_height="150dp"
-              android:src="@drawable/img1"
+              android:src="@drawable/img2"
               android:id="@+id/imagechoose"
               android:layout_gravity="center"
               />
@@ -60,6 +67,7 @@
           android:layout_width="match_parent"
           android:drawableEnd="@drawable/baseline_person_24"
           android:layout_height="wrap_content"
+          android:padding="10dp"
           android:hint="@string/enter_your_name"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
@@ -80,6 +88,7 @@
           android:drawableEnd="@drawable/baseline_call_24"
           android:layout_height="wrap_content"
           android:hint="Enter Your Phone No."
+          android:padding="10dp"
           android:inputType="number"/>
 
    </com.google.android.material.textfield.TextInputLayout>
@@ -99,6 +108,7 @@
           android:layout_width="match_parent"
           android:drawableEnd="@drawable/baseline_email_24"
           android:layout_height="wrap_content"
+          android:padding="10dp"
           android:hint="@string/enter_your_email_i_d"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
@@ -118,6 +128,7 @@
           android:layout_width="match_parent"
           android:drawableEnd="@drawable/baseline_add_location_alt_24"
           android:layout_height="wrap_content"
+          android:padding="10dp"
           android:hint="@string/enter_your_address"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
@@ -125,170 +136,53 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_gravity="end"
+             android:layout_gravity="start"
              android:text="@string/school_academic_exams"
              android:textStyle="bold"
              android:textColor="#0D91FA"
              android:layout_margin="5dp"
              android:textSize="14dp"
              />
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:orientation="horizontal"
+              >
+
+
          <Spinner
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-            android:id="@+id/schoolAcadmicExam"
+            android:id="@+id/categoryExamForm"
+             android:padding="5dp"
              android:background="#FAF6D8"
+             android:layout_weight="1"
              android:layout_margin="5dp"
             />
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:text="@string/general_competition"
-             android:textStyle="bold"
-             android:textColor="#D30048"
-             android:layout_margin="5dp"
-             android:textSize="18dp"
-             />
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/ssc_exams"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
+
          <Spinner
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:id="@+id/ssc"
+             android:id="@+id/examTypeSpinnerForm"
+             android:padding="5dp"
+             android:layout_weight="1"
              android:background="#FAF6D8"
              android:layout_margin="5dp"
              />
+          </LinearLayout>
 
-          <TextView
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:id="@+id/addBtnForm"
+                />
+
+          <ListView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_gravity="end"
-              android:layout_margin="5dp"
-              android:text="@string/railway_exams"
-              android:textColor="#0D91FA"
-              android:textSize="14dp"
-              android:textStyle="bold" />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/railway"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/defence"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/defence"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/police_exams"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/police"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/civil_services_exams"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/cicilServices"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/banking_exams"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/banking"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/entrance_exams"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/entrance"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="end"
-             android:text="@string/current_affairs_exams"
-             android:textStyle="bold"
-             android:textColor="#0D91FA"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/currentaffairs"
-             android:background="#FAF6D8"
-             android:layout_margin="5dp"
-             />
+              android:id="@+id/optionSelectedListviewForm"/>
 
           <TextView
               android:layout_width="wrap_content"

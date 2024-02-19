@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.shrutiPandit"
+    namespace = "com.shrutipandit.gotopacademy"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.shrutiPandit"
+        applicationId = "com.shrutipandit.gotopacademy"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

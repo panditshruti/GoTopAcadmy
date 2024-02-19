@@ -1,4 +1,4 @@
-package com.example.shrutiPandit
+package com.shrutipandit.gotopacademy
 
 import org.junit.Test
 

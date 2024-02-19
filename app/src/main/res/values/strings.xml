@@ -23,4 +23,168 @@
     <string name="text">text</string>
     <string name="link">link</string>
     <string name="date">date</string>
+    <string name="uplode_current_photo">Uplode Current Photo</string>
+
+
+    <string-array name="exam_category">
+        <item>Scc Exams</item>
+        <item>Railway Exams</item>
+        <item>Defence Exams</item>
+        <item>Police Exams</item>
+        <item>Civil Services Exams</item>
+        <item>Banking Exams</item>
+        <item>Entrance Exams</item>
+        <item>Current Affairs Exams</item>
+    </string-array>
+
+    <string-array name="ssc_exam_category">
+        <item>SSC GD Constable</item>
+        <item>SSC CGL</item>
+        <item>SSC CHSL</item>
+        <item>SSC MTS</item>
+        <item>SSC Selection Post</item>
+        <item>SSC CPO</item>
+    </string-array>
+
+    <string-array name="railway_exam_category">
+        <item>RRB Group D</item>
+        <item>RRB ALP</item>
+        <item>RRB NTPC</item>
+        <item>RRB JE</item>
+        <item>RPF SI</item>
+        <item>RPF Constable</item>
+        <item>RPSF</item>
+    </string-array>
+
+    <string-array name="defence_exam_category">
+        <item>Indian Army DG Agniveer</item>
+        <item>Indian Army Clerk Agniveer</item>
+        <item>Indian Army Tradesman Agniveer</item>
+        <item>Indian Army Nursing Agniveer</item>
+        <item>Indian Airforce Gruop X</item>
+        <item>Indian Airforce Gruop Y</item>
+        <item>Indian Airforce Gruop C</item>
+        <item>Indian Airforce Agniveer</item>
+        <item>Indian Navy Agniveer</item>
+        <item>Indian Navy Tradesman Agniveer</item>
+        <item>Indian Navy MR Agniveer</item>
+        <item>Indian Navy SSR Agniveer</item>
+        <item>Indian Coast Guard Navik GD</item>
+        <item>Indian Coast Guard Assistant</item>
+        <item>Indian Coast Guard Yantrikv</item>
+        <item>CRPF Constable</item>
+        <item>CRPF Head Constable</item>
+        <item>CRPF SI</item>
+        <item>CRPF AS</item>
+        <item>CRPF Paramedical Staff</item>
+        <item>CISF Head Constable</item>
+        <item>CISF Constable</item>
+        <item>CISF ASI</item>
+        <item>CISF Tradesman</item>
+        <item>SSB Head Constable</item>
+        <item>SSB SI</item>
+        <item>BSF RO</item>
+        <item>BSF ASI</item>
+       <item>ITBP Head Constable</item>
+        <item>ITBP Constable</item>
+        <item>ITBP Tradsman</item>
+        <item>Assam Rifles</item>
+        <item>NDA</item>
+        <item>CDS</item>
+
+    </string-array>
+
+    <string-array name="police_exam_category">
+        <item>Bihar Police SI</item>
+        <item>Bihar Police Constable</item>
+        <item>Bihar Police Prohibition</item>
+        <item>Bihar Police Prohibition Sub</item>
+        <item>Bihar Police ASI Steno</item>
+        <item>Bihar Police Fireman</item>
+        <item>Bihar Police Forest Duard</item>
+        <item>Bihar AMIN</item>
+        <item>Bihar LRC Clerk</item>
+        <item>Bihar Vidhan Sabha Security</item>
+        <item>BSSC</item>
+        <item>BSSC CGL</item>
+        <item>BSSC Stenographe</item>
+        <item>Delhi Police Constable</item>
+        <item>Delhi Police Head Constable</item>
+        <item>Delhi Police MTS</item>
+        <item>Delhi Police Driver</item>
+        <item>UP Police Constable</item>
+        <item>UP Police ASI</item>
+        <item>UP Police SI</item>
+        <item>UP Police Fireman</item>
+        <item>UP Police Driver</item>
+
+    </string-array>
+    <string-array name="civil_exam_category">
+        <item>UPSE Civil Services</item>
+        <item>BPSC Exam</item>
+        <item>BPSC Judicial Services</item>
+        <item>BPSC CDPO</item>
+        <item>BPSC Primary Teacher(1st to 5th)</item>
+        <item>BPSC Upper Primary Teacher(6th to 8th)</item>
+        <item>BPSC Secondry Teacher(9th to 10th)</item>
+        <item>BPSC Senior Secondry Teacher(11th to 12th)</item>
+        <item>Patna High Court Computer</item>
+        <item>Patna High Court Stenographer</item>
+        <item>Patna Civil Court Clerk</item>
+        <item>Patna Civil Court peon</item>
+        <item>Patna Civil Court Stenographer</item>
+
+
+    </string-array>
+
+   <string-array name="banking_exam_category">
+       <item>SBI PO</item>
+       <item>SBI Clerk</item>
+       <item>IBPS PO</item>
+       <item>IBPS Clerk</item>
+       <item>RRB Office Assistant</item>
+       <item>Central Bank Of India Sub Staff</item>
+
+   </string-array>
+   <string-array name="entrance_exam_category">
+       <item>Bihar D.EL.ED</item>
+       <item>Bihar CET,B.ED</item>
+       <item>Bihar STET</item>
+       <item>Bihar ITI(ITICAT)</item>
+       <item>Bihar DCECE</item>
+       <item>Bihar BCECE</item>
+       <item>Navodaya Vidyalay(JNVST)</item>
+       <item>Sainik School(AISSEE)</item>
+       <item>Scholorship NMMSS(Class-8th)</item>
+       <item>Scholorship NTSE(10th)</item>
+       <item>NEET</item>
+       <item>JEE Mains</item>
+       <item>JEE Advance </item>
+
+   </string-array>
+  <string-array name="current_affairs_exam_category">
+      <item>Annual Current Affairs</item>
+      <item>Half Yearly Current Affairs</item>
+      <item>Monthly Current Affairs</item>
+      <item>Today Current Affairs</item>
+
+  </string-array>
+
+  <string-array name="school_exam_category">
+      <item>Class 1</item>
+      <item>Class 2</item>
+      <item>Class 3</item>
+      <item>Class 4</item>
+      <item>Class 5</item>
+      <item>Class 6</item>
+      <item>Class 7</item>
+      <item>Class 8</item>
+      <item>Class 10</item>
+      <item>Class 11</item>
+      <item>Class 12</item>
+
+
+  </string-array>
+
+
 </resources>

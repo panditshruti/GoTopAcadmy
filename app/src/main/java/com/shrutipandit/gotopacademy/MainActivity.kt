@@ -1,9 +1,9 @@
-package com.example.shrutiPandit
+package com.shrutipandit.gotopacademy
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.shrutiPandit.databinding.ActivityMainBinding
+import com.shrutipandit.gotopacademy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

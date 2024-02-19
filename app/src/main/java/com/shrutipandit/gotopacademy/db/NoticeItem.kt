@@ -1,4 +1,4 @@
-package com.example.shrutiPandit.db
+package com.shrutipandit.gotopacademy.db
 
 data class NoticeItem(
 

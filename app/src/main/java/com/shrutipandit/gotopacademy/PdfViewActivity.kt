@@ -1,10 +1,10 @@
-package com.example.shrutiPandit
+package com.shrutipandit.gotopacademy
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shrutiPandit.databinding.ActivityPdfViewBinding
+import com.shrutipandit.gotopacademy.databinding.ActivityPdfViewBinding
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import com.github.barteksc.pdfviewer.util.FitPolicy
 import java.io.BufferedInputStream

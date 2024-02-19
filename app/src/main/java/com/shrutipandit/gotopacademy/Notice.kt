@@ -1,45 +1,50 @@
-package com.example.shrutiPandit
+package com.shrutipandit.gotopacademy
 
 
 import NoticeAdapterN
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.shrutiPandit.db.NoticeItem
-import com.example.shrutiPandit.databinding.ActivityResultBinding
+
+import com.shrutipandit.gotopacademy.databinding.ActivityNoticeBinding
+import com.shrutipandit.gotopacademy.db.NoticeItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class Result : AppCompatActivity() {
-    private lateinit var binding: ActivityResultBinding
+class Notice : AppCompatActivity() {
+    private lateinit var binding: ActivityNoticeBinding
     private lateinit var db: DatabaseReference
     private lateinit var arrayList: ArrayList<NoticeItem>
     private lateinit var noticeAdapter: NoticeAdapterN
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResultBinding.inflate(layoutInflater)
+        binding = ActivityNoticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = FirebaseDatabase.getInstance().reference.child("Result")
+        db = FirebaseDatabase.getInstance().reference.child("Notice")
         arrayList = arrayListOf()
 
-
-
-        noticeAdapter = NoticeAdapterN(arrayList,this@Result)
+        noticeAdapter = NoticeAdapterN(arrayList, this@Notice)
         binding.recyclerview.adapter = noticeAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
         fetchNotice()
+
+
     }
 
     private fun fetchNotice() {
         db.addValueEventListener(object : ValueEventListener {
+            @RequiresApi(Build.VERSION_CODES.O)
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -52,8 +57,8 @@ class Result : AppCompatActivity() {
 
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
+                        arrayList.add(NoticeItem(img, pdf, title, link, date!!))
 
-                        arrayList.add(NoticeItem(img, pdf, title, link,date!!))
 
                     }
 
@@ -61,13 +66,11 @@ class Result : AppCompatActivity() {
                 }
             }
 
-
             override fun onCancelled(error: DatabaseError) {
-
+                // Handle onCancelled
             }
         })
     }
 
+
 }
-
-

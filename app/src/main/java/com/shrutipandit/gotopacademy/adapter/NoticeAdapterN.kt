@@ -1,10 +1,5 @@
-import android.Manifest
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
@@ -13,15 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shrutiPandit.PdfViewActivity
-import com.example.shrutiPandit.R
-import com.example.shrutiPandit.db.NoticeItem
+import com.shrutipandit.gotopacademy.PdfViewActivity
+import com.shrutipandit.gotopacademy.R
+import com.shrutipandit.gotopacademy.db.NoticeItem
 import com.ortiz.touchview.TouchImageView
 import com.squareup.picasso.Picasso
 
