@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.shrutipandit.gotopacademy.databinding.ActivityFormBinding
+import com.shrutipandit.gotopacademy.utils.Validate
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -148,6 +149,16 @@ class Form : AppCompatActivity(){
             binding.phone.error = "Require Phone-No."
             binding.email.error = "Require email I'd"
             binding.address.error = "Require Address"
+            return
+        }
+
+        if(!Validate.isEmailValid(email)){
+            binding.email.error = "Invalid Email"
+            return
+        }
+
+        if(!Validate.isMobileNumberValid(phone)){
+            binding.phone.error = "Phone No Invalid"
             return
         }
 
