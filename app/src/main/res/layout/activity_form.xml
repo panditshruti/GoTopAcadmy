@@ -12,10 +12,14 @@
        android:layout_gravity="center"
        android:text="@string/registration_form"
        android:textStyle="bold"
-       android:textColor="#855104"
+       android:textColor="#BC7000"
        android:layout_margin="5dp"
        android:textSize="18dp"
        />
+
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,13 +28,11 @@
         android:layout_margin="10dp"
         >
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/optionSelectedListviewForm"/>
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_margin="10dp"
-       android:scrollbars="none"
-       android:layout_height="match_parent"
-       >
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -50,6 +52,30 @@
               android:id="@+id/imagechoose"
               android:layout_gravity="center"
               />
+          <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:cardCornerRadius="10dp"
+              android:backgroundTint="#DCDBDB"
+              android:elevation="10dp"
+              android:padding="10dp"
+              android:layout_margin="10dp"
+              >
+              <ScrollView
+                  android:layout_width="match_parent"
+                  android:layout_margin="10dp"
+                  android:scrollbars="none"
+                  android:layout_height="match_parent"
+                  >
+
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="10dp"
+                  android:layout_margin="10dp"
+                  android:orientation="vertical"
+                  >
 
    <com.google.android.material.textfield.TextInputLayout
        android:id="@+id/textInputLayoutname"
@@ -132,21 +158,40 @@
           android:hint="@string/enter_your_address"
           android:inputType="text"/>
    </com.google.android.material.textfield.TextInputLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           >
 
-         <TextView
+
+       <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_gravity="start"
-             android:text="@string/school_academic_exams"
+             android:layout_gravity="center"
+             android:text="Category Of Exam "
              android:textStyle="bold"
-             android:textColor="#0D91FA"
+           android:gravity="center"
+             android:layout_weight="1"
+             android:textColor="#BC7000"
              android:layout_margin="5dp"
              android:textSize="14dp"
              />
+       <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:gravity="center"
+           android:layout_weight="1"
+             android:text="Type Of Exam "
+             android:textStyle="bold"
+             android:textColor="#BC7000"
+             android:layout_margin="5dp"
+             android:textSize="14dp"
+             />
+       </LinearLayout>
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_margin="5dp"
               android:orientation="horizontal"
               >
 
@@ -156,7 +201,7 @@
              android:layout_height="wrap_content"
             android:id="@+id/categoryExamForm"
              android:padding="5dp"
-             android:background="#FAF6D8"
+             android:background="#DFDFDE"
              android:layout_weight="1"
              android:layout_margin="5dp"
             />
@@ -167,33 +212,33 @@
              android:id="@+id/examTypeSpinnerForm"
              android:padding="5dp"
              android:layout_weight="1"
-             android:background="#FAF6D8"
+             android:background="#DFDFDE"
              android:layout_margin="5dp"
              />
           </LinearLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add"
-                android:id="@+id/addBtnForm"
-                />
-
-          <ListView
+          <de.hdodenhof.circleimageview.CircleImageView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:id="@+id/optionSelectedListviewForm"/>
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="end"
               android:textStyle="bold"
-              android:textColor="#0D91FA"
-              android:layout_margin="5dp"
-              android:textSize="14dp"
+              android:id="@+id/addBtnForm"
+              android:layout_gravity="end"
+              android:background="@drawable/gr2"
+              android:layout_margin="10dp"
+              android:padding="10dp"
+              android:src="@drawable/baseline_add_24"
+
               />
-/
+
+
+
+
+              </LinearLayout>
+              </ScrollView>
+
+               </androidx.cardview.widget.CardView>
+
+
 
           <androidx.appcompat.widget.AppCompatButton
              android:layout_width="match_parent"
@@ -202,23 +247,14 @@
             android:textStyle="bold"
               android:id="@+id/submitbtn"
             android:textColor="@color/white"
-             android:layout_gravity="end"
             android:background="@drawable/gradiant2"
-            android:textSize="17dp"
+            android:textSize="15dp"
             />
 
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="end"
-              android:textStyle="bold"
-              android:textColor="#0D91FA"
-              android:layout_margin="5dp"
-              android:textSize="14dp"
-              />
-
       </LinearLayout>
-   </ScrollView>
+
+
+
     </androidx.cardview.widget.CardView>
    </LinearLayout>

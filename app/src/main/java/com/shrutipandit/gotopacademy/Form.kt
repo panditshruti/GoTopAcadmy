@@ -55,11 +55,12 @@ class Form : AppCompatActivity(){
         binding.addBtnForm.setOnClickListener {
            optionSelected.add(examCategorySelected + examTypeSelected)
             optionSelectedAdapter.notifyDataSetChanged()
+            Toast.makeText(this, "working", Toast.LENGTH_SHORT).show()
         }
 
 
         optionSelected = arrayListOf()
-        optionSelectedAdapter = ArrayAdapter(this@Form,android.R.layout.simple_list_item_1)
+        optionSelectedAdapter = ArrayAdapter(this@Form,android.R.layout.simple_list_item_1,optionSelected)
         binding.optionSelectedListviewForm.adapter = optionSelectedAdapter
         examArrayCategories  = resources.getStringArray(R.array.exam_category)
         examAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,examArrayCategories)
@@ -155,7 +156,10 @@ class Form : AppCompatActivity(){
             Toast.makeText(this, "Both images are required", Toast.LENGTH_SHORT).show()
             return
         }
-
+         if (optionSelected.isEmpty()){
+             Toast.makeText(this, "At least one option should be selected", Toast.LENGTH_SHORT).show()
+             return
+         }
 
         if (selectedImageUri != null && isImageSelected  &&
             name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()
@@ -168,7 +172,7 @@ class Form : AppCompatActivity(){
                 database.child(entryKey).child("phone No-").setValue(phone)
                 database.child(entryKey).child("email").setValue(email)
                 database.child(entryKey).child("address").setValue(address)
-//                database.child(entryKey).child("schoolExam").setValue(schoolExam)
+                database.child(entryKey).child("schoolExam").setValue(optionSelected)
                // database.child(entryKey).child("sscExam").setValue(sscExam)
 
                 database.child(entryKey).child("CurrentDate").setValue(currentDate)
