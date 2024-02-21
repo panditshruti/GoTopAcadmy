@@ -143,6 +143,8 @@ class Form : AppCompatActivity() {
         val phone = binding.phone.text.toString()
         val email = binding.email.text.toString()
         val address = binding.address.text.toString()
+        val optionTextview = binding.optionSelectedTextviewForm.text.toString()
+
 
         if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty()) {
             // Show a required message if any text field is empty
@@ -174,15 +176,23 @@ class Form : AppCompatActivity() {
 
         if (selectedImageUri == null || !isImageSelected) {
             // Show a required message if any image is not selected
-            Toast.makeText(this, "Both images are required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, " images are required", Toast.LENGTH_SHORT).show()
 
             // Dismiss ProgressDialog on failure
             progressDialog.dismiss()
             return
         }
 
+        if (binding.optionSelectedTextviewForm == null) {
+            Toast.makeText(this, "Require Exam Option", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+
+
+
         if (selectedImageUri != null && isImageSelected &&
-            name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty()
+            name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty() && optionTextview.isNotEmpty()
         ) {
             val currentDate =
                 SimpleDateFormat("yyyy_MM_dd", Locale.getDefault()).format(Date())
@@ -204,14 +214,17 @@ class Form : AppCompatActivity() {
                 binding.email.text?.clear()
                 binding.address.text?.clear()
 
+
+
                 isImageSelected = false
 
-                Toast.makeText(this, "data Uploded", Toast.LENGTH_SHORT).show()
+
             }
         } else {
             // Handle the case where some required fields are empty or image is not selected
             // Dismiss ProgressDialog on failure
             progressDialog.dismiss()
+            Toast.makeText(this, "Require Exam Option", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -229,6 +242,8 @@ class Form : AppCompatActivity() {
 
                         // Hide ProgressDialog when upload is successful
                         progressDialog.dismiss()
+
+                        binding.imagechoose.setImageResource(R.drawable.img2)
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -240,6 +255,8 @@ class Form : AppCompatActivity() {
 
                     // Hide ProgressDialog on failure
                     progressDialog.dismiss()
+
+
                 }
         }
     }
