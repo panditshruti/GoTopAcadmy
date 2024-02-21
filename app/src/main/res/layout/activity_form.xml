@@ -1,260 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="#EDEBD3"
     android:layout_height="match_parent"
+    android:background="#EDEBD3"
     android:orientation="vertical">
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center"
-       android:text="@string/registration_form"
-       android:textStyle="bold"
-       android:textColor="#BC7000"
-       android:layout_margin="5dp"
-       android:textSize="18dp"
-       />
 
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/registration_form"
+        android:textColor="#BC7000"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp"
         android:layout_margin="10dp"
-        >
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
 
-        <ListView
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/optionSelectedListviewForm"/>
+            android:scrollbars="none"
+            >
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          >
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/uplode_current_photo"
-              android:layout_gravity="center"
-              android:layout_margin="5dp"
-              />
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="150dp"
-              android:layout_height="150dp"
-              android:src="@drawable/img2"
-              android:id="@+id/imagechoose"
-              android:layout_gravity="center"
-              />
-          <androidx.cardview.widget.CardView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              app:cardCornerRadius="10dp"
-              android:backgroundTint="#DCDBDB"
-              android:elevation="10dp"
-              android:padding="10dp"
-              android:layout_margin="10dp"
-              >
-              <ScrollView
-                  android:layout_width="match_parent"
-                  android:layout_margin="10dp"
-                  android:scrollbars="none"
-                  android:layout_height="match_parent"
-                  >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:padding="10dp"
-                  android:layout_margin="10dp"
-                  android:orientation="vertical"
-                  >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="@string/uplode_current_photo" />
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:id="@+id/textInputLayoutname"
-       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:boxStrokeColor="#C6B200"
-       app:boxStrokeWidth="2dp"
-       app:errorEnabled="true"
-       app:errorTextColor="#BF0000"
-       app:hintTextColor="@color/black">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagechoose"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img2" />
 
-      <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/name"
-          android:layout_width="match_parent"
-          android:drawableEnd="@drawable/baseline_person_24"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:hint="@string/enter_your_name"
-          android:inputType="text"/>
-   </com.google.android.material.textfield.TextInputLayout>
-  <com.google.android.material.textfield.TextInputLayout
-       android:id="@+id/textInputLayoutphone"
-       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:boxStrokeColor="#C6B200"
-       app:boxStrokeWidth="2dp"
-       app:errorEnabled="true"
-       app:errorTextColor="#BF0000"
-       app:hintTextColor="@color/black">
-
-      <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/phone"
-          android:layout_width="match_parent"
-          android:drawableEnd="@drawable/baseline_call_24"
-          android:layout_height="wrap_content"
-          android:hint="Enter Your Phone No."
-          android:padding="10dp"
-          android:inputType="number"/>
-
-   </com.google.android.material.textfield.TextInputLayout>
- <com.google.android.material.textfield.TextInputLayout
-       android:id="@+id/textInputLayoutemail"
-       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:boxStrokeColor="#C6B200"
-       app:boxStrokeWidth="2dp"
-       app:errorEnabled="true"
-       app:errorTextColor="#BF0000"
-       app:hintTextColor="@color/black">
-
-      <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/email"
-          android:layout_width="match_parent"
-          android:drawableEnd="@drawable/baseline_email_24"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:hint="@string/enter_your_email_i_d"
-          android:inputType="text"/>
-   </com.google.android.material.textfield.TextInputLayout>
-  <com.google.android.material.textfield.TextInputLayout
-       android:id="@+id/textInputLayoutaddress"
-       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:boxStrokeColor="#C6B200"
-       app:boxStrokeWidth="2dp"
-       app:errorEnabled="true"
-       app:errorTextColor="#BF0000"
-       app:hintTextColor="@color/black">
-
-      <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/address"
-          android:layout_width="match_parent"
-          android:drawableEnd="@drawable/baseline_add_location_alt_24"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:hint="@string/enter_your_address"
-          android:inputType="text"/>
-   </com.google.android.material.textfield.TextInputLayout>
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="#EDEBD3"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp">
 
 
-       <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:text="Category Of Exam "
-             android:textStyle="bold"
-           android:gravity="center"
-             android:layout_weight="1"
-             android:textColor="#BC7000"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-       <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:gravity="center"
-           android:layout_weight="1"
-             android:text="Type Of Exam "
-             android:textStyle="bold"
-             android:textColor="#BC7000"
-             android:layout_margin="5dp"
-             android:textSize="14dp"
-             />
-       </LinearLayout>
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal"
-              >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutname"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#C6B200"
+                        app:boxStrokeWidth="2dp"
+                        app:errorEnabled="true"
+                        app:errorTextColor="#BF0000"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/baseline_person_24"
+                            android:hint="@string/enter_your_name"
+                            android:inputType="text"
+                            android:padding="10dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutphone"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#C6B200"
+                        app:boxStrokeWidth="2dp"
+                        app:errorEnabled="true"
+                        app:errorTextColor="#BF0000"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/baseline_call_24"
+                            android:hint="Enter Your Phone No."
+                            android:inputType="number"
+                            android:padding="10dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutemail"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#C6B200"
+                        app:boxStrokeWidth="2dp"
+                        app:errorEnabled="true"
+                        app:errorTextColor="#BF0000"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/baseline_email_24"
+                            android:hint="@string/enter_your_email_i_d"
+                            android:inputType="text"
+                            android:padding="10dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutaddress"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#C6B200"
+                        app:boxStrokeWidth="2dp"
+                        app:errorEnabled="true"
+                        app:errorTextColor="#BF0000"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/baseline_add_location_alt_24"
+                            android:hint="@string/enter_your_address"
+                            android:inputType="text"
+                            android:padding="10dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Category Of Exam "
+                            android:textColor="#BC7000"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Type Of Exam "
+                            android:textColor="#BC7000"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
 
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-            android:id="@+id/categoryExamForm"
-             android:padding="5dp"
-             android:background="#DFDFDE"
-             android:layout_weight="1"
-             android:layout_margin="5dp"
-            />
+                        <Spinner
+                            android:id="@+id/categoryExamForm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="#F8F5F5"
+                            android:padding="5dp" />
 
-         <Spinner
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/examTypeSpinnerForm"
-             android:padding="5dp"
-             android:layout_weight="1"
-             android:background="#DFDFDE"
-             android:layout_margin="5dp"
-             />
-          </LinearLayout>
-
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:id="@+id/addBtnForm"
-              android:layout_gravity="end"
-              android:background="@drawable/gr2"
-              android:layout_margin="10dp"
-              android:padding="10dp"
-              android:src="@drawable/baseline_add_24"
-
-              />
+                        <Spinner
+                            android:id="@+id/examTypeSpinnerForm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="#F8F5F5"
+                            android:padding="5dp" />
+                    </LinearLayout>
 
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/addBtnForm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/gr2"
+                        android:padding="10dp"
+                        android:src="@drawable/baseline_add_24"
+                        android:textStyle="bold"
 
+                        />
 
-              </LinearLayout>
-              </ScrollView>
-
-               </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/optionSelectedTextviewForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"
+                        android:background="#F8F5F5" />
 
 
 
-          <androidx.appcompat.widget.AppCompatButton
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-            android:text="@string/submit"
-            android:textStyle="bold"
-              android:id="@+id/submitbtn"
-            android:textColor="@color/white"
-            android:background="@drawable/gradiant2"
-            android:textSize="15dp"
-            />
+                </LinearLayout>
 
 
-      </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submitbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/gradiant2"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="7dp" />-->
+        </LinearLayout>
+
+        </ScrollView>
     </androidx.cardview.widget.CardView>
-   </LinearLayout>
+</LinearLayout>
+
+
+
