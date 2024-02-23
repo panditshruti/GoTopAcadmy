@@ -145,7 +145,6 @@ class Form : AppCompatActivity() {
         val address = binding.address.text.toString()
         val optionTextview = binding.optionSelectedTextviewForm.text.toString()
 
-
         if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || address.isEmpty()) {
             // Show a required message if any text field is empty
             binding.name.error = "Require Name"
@@ -183,13 +182,11 @@ class Form : AppCompatActivity() {
             return
         }
 
-        if (binding.optionSelectedTextviewForm == null) {
+        if (binding.optionSelectedTextviewForm.text.isNullOrEmpty()) {
             Toast.makeText(this, "Require Exam Option", Toast.LENGTH_SHORT).show()
+            progressDialog.dismiss()
             return
         }
-
-
-
 
         if (selectedImageUri != null && isImageSelected &&
             name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty() && optionTextview.isNotEmpty()
@@ -199,26 +196,48 @@ class Form : AppCompatActivity() {
             val entryKey = database.push().key
 
             entryKey?.let {
-                database.child(entryKey).child("name").setValue(name)
-                database.child(entryKey).child("phone No-").setValue(phone)
-                database.child(entryKey).child("email").setValue(email)
-                database.child(entryKey).child("address").setValue(address)
-                database.child(entryKey).child("schoolExam")
-                    .setValue(selectedOptionsText.toString())
-                database.child(entryKey).child("CurrentDate").setValue(currentDate)
+                val storageReference =
+                    FirebaseStorage.getInstance().reference
+                        .child("images/${System.currentTimeMillis()}.jpg")
 
-                uploadImageToStorage(selectedImageUri, 1, entryKey)
+                storageReference.putFile(selectedImageUri!!)
+                    .addOnSuccessListener {
+                        storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
+                            // Save image URL to database
+                            saveImageUrlToDatabase(downloadUri.toString(), entryKey)
 
-                binding.name.text?.clear()
-                binding.phone.text?.clear()
-                binding.email.text?.clear()
-                binding.address.text?.clear()
+                            // Save other details to database
+                            database.child(entryKey).child("name").setValue(name)
+                            database.child(entryKey).child("phone No-").setValue(phone)
+                            database.child(entryKey).child("email").setValue(email)
+                            database.child(entryKey).child("address").setValue(address)
+                            database.child(entryKey).child("schoolExam")
+                                .setValue(selectedOptionsText.toString())
+                            database.child(entryKey).child("CurrentDate").setValue(currentDate)
 
+                            // Hide ProgressDialog when upload is successful
+                            progressDialog.dismiss()
 
+                            // Reset form fields and image selection
+                            binding.name.text?.clear()
+                            binding.phone.text?.clear()
+                            binding.email.text?.clear()
+                            binding.address.text?.clear()
+                            binding.optionSelectedTextviewForm.text = ""
+                            binding.imagechoose.setImageResource(R.drawable.img2)
+                            isImageSelected = false
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(
+                            this,
+                            "Image Upload Failed: ${exception.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                isImageSelected = false
-
-
+                        // Hide ProgressDialog on failure
+                        progressDialog.dismiss()
+                    }
             }
         } else {
             // Handle the case where some required fields are empty or image is not selected
@@ -228,41 +247,8 @@ class Form : AppCompatActivity() {
         }
     }
 
-    private fun uploadImageToStorage(uri: Uri?, requestCode: Int, entryKey: String) {
-        uri?.let {
-            val storageReference =
-                FirebaseStorage.getInstance().reference
-                    .child("images/${System.currentTimeMillis()}_${requestCode}.jpg")
-
-            storageReference.putFile(uri)
-                .addOnSuccessListener {
-                    storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
-                        // Save image URL to database
-                        saveImageUrlToDatabase(downloadUri.toString(), requestCode, entryKey)
-
-                        // Hide ProgressDialog when upload is successful
-                        progressDialog.dismiss()
-
-                        binding.imagechoose.setImageResource(R.drawable.img2)
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(
-                        this,
-                        "Image $requestCode Upload Failed: ${exception.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    // Hide ProgressDialog on failure
-                    progressDialog.dismiss()
-
-
-                }
-        }
-    }
-
-    private fun saveImageUrlToDatabase(downloadUrl: String, requestCode: Int, entryKey: String) {
-        val uriKey = "uri$requestCode"
+    private fun saveImageUrlToDatabase(downloadUrl: String, entryKey: String) {
+        val uriKey = "uri"
         database.child(entryKey).child(uriKey).setValue(downloadUrl)
     }
 }
