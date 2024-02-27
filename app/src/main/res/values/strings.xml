@@ -85,7 +85,7 @@
         <item>SSB SI</item>
         <item>BSF RO</item>
         <item>BSF ASI</item>
-       <item>ITBP Head Constable</item>
+        <item>ITBP Head Constable</item>
         <item>ITBP Constable</item>
         <item>ITBP Tradsman</item>
         <item>Assam Rifles</item>
@@ -137,54 +137,54 @@
 
     </string-array>
 
-   <string-array name="banking_exam_category">
-       <item>SBI PO</item>
-       <item>SBI Clerk</item>
-       <item>IBPS PO</item>
-       <item>IBPS Clerk</item>
-       <item>RRB Office Assistant</item>
-       <item>Central Bank Of India Sub Staff</item>
+    <string-array name="banking_exam_category">
+        <item>SBI PO</item>
+        <item>SBI Clerk</item>
+        <item>IBPS PO</item>
+        <item>IBPS Clerk</item>
+        <item>RRB Office Assistant</item>
+        <item>Central Bank Of India Sub Staff</item>
 
-   </string-array>
-   <string-array name="entrance_exam_category">
-       <item>Bihar D.EL.ED</item>
-       <item>Bihar CET,B.ED</item>
-       <item>Bihar STET</item>
-       <item>Bihar ITI(ITICAT)</item>
-       <item>Bihar DCECE</item>
-       <item>Bihar BCECE</item>
-       <item>Navodaya Vidyalay(JNVST)</item>
-       <item>Sainik School(AISSEE)</item>
-       <item>Scholorship NMMSS(Class-8th)</item>
-       <item>Scholorship NTSE(10th)</item>
-       <item>NEET</item>
-       <item>JEE Mains</item>
-       <item>JEE Advance </item>
+    </string-array>
+    <string-array name="entrance_exam_category">
+        <item>Bihar D.EL.ED</item>
+        <item>Bihar CET,B.ED</item>
+        <item>Bihar STET</item>
+        <item>Bihar ITI(ITICAT)</item>
+        <item>Bihar DCECE</item>
+        <item>Bihar BCECE</item>
+        <item>Navodaya Vidyalay(JNVST)</item>
+        <item>Sainik School(AISSEE)</item>
+        <item>Scholorship NMMSS(Class-8th)</item>
+        <item>Scholorship NTSE(10th)</item>
+        <item>NEET</item>
+        <item>JEE Mains</item>
+        <item>JEE Advance </item>
 
-   </string-array>
-  <string-array name="current_affairs_exam_category">
-      <item>Annual Current Affairs</item>
-      <item>Half Yearly Current Affairs</item>
-      <item>Monthly Current Affairs</item>
-      <item>Today Current Affairs</item>
+    </string-array>
+    <string-array name="current_affairs_exam_category">
+        <item>Annual Current Affairs</item>
+        <item>Half Yearly Current Affairs</item>
+        <item>Monthly Current Affairs</item>
+        <item>Today Current Affairs</item>
 
-  </string-array>
+    </string-array>
 
-  <string-array name="school_exam_category">
-      <item>Class 1</item>
-      <item>Class 2</item>
-      <item>Class 3</item>
-      <item>Class 4</item>
-      <item>Class 5</item>
-      <item>Class 6</item>
-      <item>Class 7</item>
-      <item>Class 8</item>
-      <item>Class 10</item>
-      <item>Class 11</item>
-      <item>Class 12</item>
+    <string-array name="school_exam_category">
+        <item>Class 1</item>
+        <item>Class 2</item>
+        <item>Class 3</item>
+        <item>Class 4</item>
+        <item>Class 5</item>
+        <item>Class 6</item>
+        <item>Class 7</item>
+        <item>Class 8</item>
+        <item>Class 10</item>
+        <item>Class 11</item>
+        <item>Class 12</item>
 
 
-  </string-array>
+    </string-array>
 
 
 </resources>

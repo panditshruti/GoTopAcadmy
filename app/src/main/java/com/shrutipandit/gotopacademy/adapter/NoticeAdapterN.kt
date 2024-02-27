@@ -1,3 +1,5 @@
+
+package com.shrutipandit.gotopacademy.adapter
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -9,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.shrutipandit.gotopacademy.PdfViewActivity
+import com.shrutipandit.gotopacademy.activity.PdfViewActivity
 import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.db.NoticeItem
 import com.ortiz.touchview.TouchImageView

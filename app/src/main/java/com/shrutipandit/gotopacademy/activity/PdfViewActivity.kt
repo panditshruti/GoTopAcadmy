@@ -1,4 +1,4 @@
-package com.shrutipandit.gotopacademy
+package com.shrutipandit.gotopacademy.activity
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask

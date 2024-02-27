@@ -1,4 +1,4 @@
-package com.shrutipandit.gotopacademy
+package com.shrutipandit.gotopacademy.activity
 
 import android.app.ProgressDialog
 import android.net.Uri
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.databinding.ActivityFormBinding
 import com.shrutipandit.gotopacademy.utils.Validate
 import com.squareup.picasso.Picasso
@@ -248,7 +249,7 @@ class Form : AppCompatActivity() {
     }
 
     private fun saveImageUrlToDatabase(downloadUrl: String, entryKey: String) {
-        val uriKey = "uri"
+        val uriKey = "uri1"
         database.child(entryKey).child(uriKey).setValue(downloadUrl)
     }
 }

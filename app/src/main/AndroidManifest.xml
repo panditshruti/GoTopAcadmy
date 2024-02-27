@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -19,23 +23,13 @@
         android:theme="@style/Theme.GoTopAcademy"
         tools:targetApi="31">
         <activity
-            android:name=".PdfViewActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".Notice"
+            android:name=".activity.Profile"
             android:exported="false" />
         <activity
-            android:name=".About"
+            android:name=".activity.EditProfile"
             android:exported="false" />
         <activity
-            android:name=".Result"
-            android:exported="false" />
-        <activity
-            android:name=".Form"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".activity.LogInPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +37,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.PdfViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.Notice"
+            android:exported="false" />
+        <activity
+            android:name=".activity.About"
+            android:exported="false" />
+        <activity
+            android:name=".activity.Result"
+            android:exported="false" />
+        <activity
+            android:name=".activity.Form"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

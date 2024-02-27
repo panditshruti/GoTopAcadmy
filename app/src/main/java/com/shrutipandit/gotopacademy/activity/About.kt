@@ -1,4 +1,4 @@
-package com.shrutipandit.gotopacademy
+package com.shrutipandit.gotopacademy.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
