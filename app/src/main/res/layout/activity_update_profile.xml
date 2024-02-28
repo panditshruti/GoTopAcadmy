@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:layout_height="match_parent"
-    android:background="#D6E9F8"
-    tools:context=".activity.EditProfile">
-
+    tools:context=".activity.UpdateProfile">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,13 +29,13 @@
 
 
 
-<!--                <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                    android:id="@+id/imagechoose"-->
-<!--                    android:layout_width="150dp"-->
-<!--                    android:layout_height="130dp"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:src="@drawable/img1" />-->
+                <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                    android:id="@+id/imagechoose"-->
+                <!--                    android:layout_width="150dp"-->
+                <!--                    android:layout_height="130dp"-->
+                <!--                    android:layout_margin="10dp"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:src="@drawable/img1" />-->
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -149,50 +149,50 @@
                                 android:layout_marginStart="10dp"
                                 android:orientation="vertical"
                                 >
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutdob"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:boxStrokeColor="#C6B200"
-                                app:boxStrokeWidth="2dp"
-                                android:layout_weight="1"
-                                app:errorEnabled="true"
-                                app:errorTextColor="#BF0000"
-                                app:hintTextColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/dob"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textInputLayoutdob"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="Enter D.O.B"
+                                    app:boxStrokeColor="#C6B200"
+                                    app:boxStrokeWidth="2dp"
                                     android:layout_weight="1"
-                                    android:inputType="text"
-                                    android:padding="10dp" />
+                                    app:errorEnabled="true"
+                                    app:errorTextColor="#BF0000"
+                                    app:hintTextColor="@color/black">
 
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutpinCode"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:boxStrokeColor="#C6B200"
-                                app:boxStrokeWidth="2dp"
-                                android:layout_weight="1"
-                                app:errorEnabled="true"
-                                app:errorTextColor="#BF0000"
-                                app:hintTextColor="@color/black">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/dob"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Enter D.O.B"
+                                        android:layout_weight="1"
+                                        android:inputType="text"
+                                        android:padding="10dp" />
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/pinCode"
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textInputLayoutpinCode"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="Enter Pin Code"
+                                    app:boxStrokeColor="#C6B200"
+                                    app:boxStrokeWidth="2dp"
                                     android:layout_weight="1"
-                                    android:inputType="number"
-                                    android:padding="10dp" />
+                                    app:errorEnabled="true"
+                                    app:errorTextColor="#BF0000"
+                                    app:hintTextColor="@color/black">
 
-                            </com.google.android.material.textfield.TextInputLayout>
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/pinCode"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Enter Pin Code"
+                                        android:layout_weight="1"
+                                        android:inputType="number"
+                                        android:padding="10dp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -208,24 +208,24 @@
                                     android:layout_gravity="center"
 
                                     android:text="Gendar"
-                                     />
+                                    />
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     >
-                                <CheckBox
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Male"
-                                    android:id="@+id/male"
-                                    />
-                                <CheckBox
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Female"
-                                    android:id="@+id/female"
-                                    />
+                                    <CheckBox
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Male"
+                                        android:id="@+id/male"
+                                        />
+                                    <CheckBox
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Female"
+                                        android:id="@+id/female"
+                                        />
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -259,7 +259,7 @@
                                     android:inputType="text"
                                     android:padding="10dp" />
                             </com.google.android.material.textfield.TextInputLayout>
-                       <com.google.android.material.textfield.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/textInputLayoutCounty"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                                 app:boxStrokeColor="#C6B200"
                                 app:boxStrokeWidth="2dp"
                                 android:layout_weight="1"
-                           android:layout_margin="5dp"
+                                android:layout_margin="5dp"
                                 app:errorEnabled="true"
                                 app:errorTextColor="#BF0000"
                                 app:hintTextColor="@color/black">
@@ -283,7 +283,7 @@
                             </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
-                       <LinearLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -310,7 +310,7 @@
                                     android:inputType="text"
                                     android:padding="10dp" />
                             </com.google.android.material.textfield.TextInputLayout>
-                       <com.google.android.material.textfield.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/textInputLayoutCity"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="match_parent"
@@ -318,7 +318,7 @@
                                 app:boxStrokeColor="#C6B200"
                                 app:boxStrokeWidth="2dp"
                                 android:layout_weight="1"
-                           android:layout_margin="5dp"
+                                android:layout_margin="5dp"
                                 app:errorEnabled="true"
                                 app:errorTextColor="#BF0000"
                                 app:hintTextColor="@color/black">
@@ -364,5 +364,4 @@
 
         </ScrollView>
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>

@@ -42,7 +42,7 @@ class EditProfile : AppCompatActivity() {
         binding.country.setText(country)
         binding.city.setText(city)
         binding.male.isChecked = isMale
-        binding.female.isChecked = isMale
+        binding.female.isChecked = femaleMale
 
         if (name != "" && fatherName != ""  && phone != ""  && email != ""  && dob != ""  &&
             pinCode != "" && village != ""  && country != "" && state != "" && city != "" ) {
