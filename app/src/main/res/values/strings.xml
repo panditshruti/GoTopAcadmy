@@ -6,6 +6,8 @@
     <string name="enter_your_address">Enter your Address</string>
     <string name="school_academic_exams">School Academic Exams</string>
     <string name="general_competition">General Competition</string>
+    <string name="school">School Exam</string>
+    <string name="library_time">School Exam</string>
     <string name="ssc_exams">SSC Exams</string>
     <string name="railway_exams">Railway Exams</string>
     <string name="defence">Defence</string>
@@ -25,9 +27,14 @@
     <string name="date">date</string>
     <string name="uplode_current_photo">Uplode Current Photo</string>
 
+    <string-array name="clas">
+
+    </string-array>
+
 
     <string-array name="exam_category">
-        <item>Scc Exams</item>
+        <item>School Academy Exams</item>
+        <item>SSC Exams</item>
         <item>Railway Exams</item>
         <item>Defence Exams</item>
         <item>Police Exams</item>
@@ -35,6 +42,15 @@
         <item>Banking Exams</item>
         <item>Entrance Exams</item>
         <item>Current Affairs Exams</item>
+
+    </string-array>
+
+    <string-array name="library">
+        <item>Library Time</item>
+    </string-array>
+
+    <string-array name="my_school">
+        <item>Class</item>
     </string-array>
 
     <string-array name="ssc_exam_category">
@@ -182,9 +198,26 @@
         <item>Class 10</item>
         <item>Class 11</item>
         <item>Class 12</item>
+    </string-array>
 
+    <string-array name="library_time">
+        <item>6am to 12pm</item>
+        <item>12pm to 6pm</item>
+        <item>6pm to 12am</item>
+        <item>12am to 6am</item>
 
     </string-array>
 
+    <string-array name="class_my">
+    <item>Class 1</item>
+    <item>Class 2</item>
+    <item>Class 3</item>
+    <item>Class 4</item>
+    <item>Class 5</item>
+    <item>Class 6</item>
+    <item>Class 7</item>
+    <item>Class 8</item>
+
+</string-array>
 
 </resources>

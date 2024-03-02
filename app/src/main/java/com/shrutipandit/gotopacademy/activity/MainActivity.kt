@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-        binding.about.setOnClickListener {
+        binding.news.setOnClickListener {
 
-            val intent = Intent(this, About::class.java)
+            val intent = Intent(this, News::class.java)
             startActivity(intent)
         }
 
@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.aboutus -> {
-                Toast.makeText(this, "Clicked on abouus page", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this,About::class.java)
+                startActivity(intent)
                 true
             }
             R.id.helpus -> {
