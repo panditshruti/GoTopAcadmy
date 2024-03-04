@@ -1,31 +1,27 @@
-package com.shrutipandit.gotopacademy.fragment
-
+package com.shrutipandit.gotopacademy.ui
 
 import android.app.ProgressDialog
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.shrutipandit.gotopacademy.R
-import com.shrutipandit.gotopacademy.databinding.FragmentSchoolBinding
+import com.shrutipandit.gotopacademy.databinding.FragmentLibrabryBinding
 import com.shrutipandit.gotopacademy.utils.Validate
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class SchoolFragment : Fragment() {
-
-        private lateinit var binding: FragmentSchoolBinding
+class LibrabryFragment : Fragment(R.layout.fragment_librabry) {
+    private lateinit var binding:FragmentLibrabryBinding
         private lateinit var examAdapter: ArrayAdapter<String>
         private lateinit var examTypeAdapter: ArrayAdapter<String>
         private lateinit var database: DatabaseReference
@@ -45,18 +41,13 @@ class SchoolFragment : Fragment() {
         private var selectedImageUri: Uri? = null
         private var isImageSelected = false
 
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            binding = FragmentSchoolBinding.inflate(inflater, container, false)
-            return binding.root
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
+        binding = FragmentLibrabryBinding.bind(view)
 
-            database = FirebaseDatabase.getInstance().reference.child("School Student Details")
+
+            database = FirebaseDatabase.getInstance().reference.child("Library Student Details")
 
             // Initialize ProgressDialog
             progressDialog = ProgressDialog(requireContext())
@@ -66,9 +57,11 @@ class SchoolFragment : Fragment() {
             binding.imageChoose.setOnClickListener {
                 openFilePicker(1)
             }
+
             binding.submitBtn.setOnClickListener {
                 saveFileToDatabase()
             }
+
             binding.addBtnForm.setOnClickListener {
                 val newItem = "$examCategorySelected ----> $examTypeSelected"
                 selectedOptionsText.clear()
@@ -76,9 +69,10 @@ class SchoolFragment : Fragment() {
                 binding.optionSelectedTextviewForm.text = selectedOptionsText.toString()
                 Toast.makeText(requireContext(), "Exam Added", Toast.LENGTH_SHORT).show()
             }
+
             selectedOptionsText = StringBuilder()
 
-            examArrayCategories = resources.getStringArray(R.array.my_school)
+            examArrayCategories = resources.getStringArray(R.array.library)
             examAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, examArrayCategories)
             examAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.categoryExamForm.adapter = examAdapter
@@ -104,10 +98,12 @@ class SchoolFragment : Fragment() {
 
         private fun updateStateSpinner(selectedCategories: String) {
             val stateArrayId = when (selectedCategories) {
-                "Class" -> R.array.class_my
+
+                "Library Time" -> R.array.library_time
 
                 else -> R.array.clas
             }
+
             val examType: Array<String> = resources.getStringArray(stateArrayId)
             examTypeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, examType)
             examTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -130,6 +126,7 @@ class SchoolFragment : Fragment() {
                     }
                 }
         }
+
         private fun openFilePicker(requestCode: Int) {
             val mimeType = "image/*"
             when (requestCode) {
@@ -227,7 +224,7 @@ class SchoolFragment : Fragment() {
                                 binding.email.text?.clear()
                                 binding.address.text?.clear()
                                 binding.optionSelectedTextviewForm.text = ""
-                                binding.imageChoose.setImageResource(R.drawable.pred)
+                                binding.imageChoose.setImageResource(R.drawable.img2)
                                 isImageSelected = false
                             }
                         }
@@ -237,6 +234,7 @@ class SchoolFragment : Fragment() {
                                 "Image Upload Failed: ${exception.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
+
                             // Hide ProgressDialog on failure
                             progressDialog.dismiss()
                         }
@@ -254,4 +252,5 @@ class SchoolFragment : Fragment() {
             database.child(entryKey).child(uriKey).setValue(downloadUrl)
         }
     }
+
 

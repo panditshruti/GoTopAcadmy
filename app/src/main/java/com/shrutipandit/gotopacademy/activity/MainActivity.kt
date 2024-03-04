@@ -1,16 +1,24 @@
 package com.shrutipandit.gotopacademy.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,32 +28,22 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        binding.form.setOnClickListener {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navController = navHostFragment.navController
 
-            val intent = Intent(this, Form::class.java)
-            startActivity(intent)
-        }
-
-        binding.result.setOnClickListener {
-
-            val intent = Intent(this, Result::class.java)
-            startActivity(intent)
-        }
-
-    binding.notice.setOnClickListener {
-        val intent = Intent(this, Notice::class.java)
-        startActivity(intent)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.allFormFragment,
+                R.id.noticeFragment,
+                R.id.resultFragment,
+                R.id.newsFragment
+            )
+        )
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
-        binding.news.setOnClickListener {
-
-            val intent = Intent(this, News::class.java)
-            startActivity(intent)
-        }
-
-
-
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
@@ -55,24 +53,25 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.profile -> {
-              val intent = Intent(this,Profile::class.java)
-                startActivity(intent)
+                Toast.makeText(this, "Clicked on About Us page", Toast.LENGTH_SHORT).show()
                 true
             }
 
             R.id.aboutus -> {
-                val intent = Intent(this,About::class.java)
-                startActivity(intent)
+                Toast.makeText(this, "Clicked on Setting page", Toast.LENGTH_SHORT).show()
                 true
             }
+
             R.id.helpus -> {
-                Toast.makeText(this, "Clicked on help page", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Clicked on Setting page", Toast.LENGTH_SHORT).show()
                 true
             }
+
             R.id.faq -> {
-                Toast.makeText(this, "Clicked on fas page", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Clicked on Setting page", Toast.LENGTH_SHORT).show()
                 true
             }
+
             R.id.logout -> {
                 Toast.makeText(this, "Clicked on Setting page", Toast.LENGTH_SHORT).show()
                 true

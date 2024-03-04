@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.HomeFragment"
+        android:label="GoTopAcademy">
+        <action
+            android:id="@+id/action_homeFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_noticeFragment"
+            app:destination="@id/noticeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsFragment2"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allFormFragment"
+            app:destination="@id/allFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.NoticeFragment"
+        android:label="Notice"
+        tools:layout="@layout/fragment_notice" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.NewsFragment"
+        android:label="News"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/allFormFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.AllFormFragment"
+        android:label="Form Fill"
+        tools:layout="@layout/fragment_all_form" />
+</navigation>

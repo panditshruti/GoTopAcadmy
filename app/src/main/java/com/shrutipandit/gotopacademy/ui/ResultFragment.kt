@@ -1,43 +1,44 @@
-package com.shrutipandit.gotopacademy.activity
-
-
+package com.shrutipandit.gotopacademy.ui
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shrutipandit.gotopacademy.db.NoticeItem
-import com.shrutipandit.gotopacademy.databinding.ActivityResultBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.adapter.NoticeAdapterN
-import com.shrutipandit.gotopacademy.databinding.ActivityNewsBinding
+import com.shrutipandit.gotopacademy.databinding.FragmentResultBinding
+import com.shrutipandit.gotopacademy.db.NoticeItem
 
-class News : AppCompatActivity() {
-    private lateinit var binding: ActivityNewsBinding
+class ResultFragment : Fragment(R.layout.fragment_result) {
+    private lateinit var binding: FragmentResultBinding
+
+
     private lateinit var db: DatabaseReference
     private lateinit var arrayList: ArrayList<NoticeItem>
     private lateinit var noticeAdapter: NoticeAdapterN
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityNewsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentResultBinding.bind(view)
 
-        db = FirebaseDatabase.getInstance().reference.child("News")
+        db = FirebaseDatabase.getInstance().reference.child("Result")
         arrayList = arrayListOf()
 
 
 
-
-        noticeAdapter = NoticeAdapterN(arrayList,this@News)
+        noticeAdapter = NoticeAdapterN(arrayList, requireContext())
         binding.recyclerview.adapter = noticeAdapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(this)
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+
+
 
         fetchNotice()
     }
@@ -57,7 +58,7 @@ class News : AppCompatActivity() {
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
 
-                        arrayList.add(NoticeItem(img, pdf, title, link,date!!))
+                        arrayList.add(NoticeItem(img, pdf, title, link, date!!))
 
                     }
 
@@ -73,5 +74,3 @@ class News : AppCompatActivity() {
     }
 
 }
-
-

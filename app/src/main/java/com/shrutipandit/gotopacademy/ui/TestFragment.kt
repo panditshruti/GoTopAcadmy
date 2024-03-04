@@ -1,4 +1,4 @@
-package com.shrutipandit.gotopacademy.fragment
+package com.shrutipandit.gotopacademy.ui
 
 import android.app.ProgressDialog
 import android.net.Uri

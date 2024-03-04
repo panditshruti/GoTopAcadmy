@@ -1,49 +1,50 @@
-package com.shrutipandit.gotopacademy.activity
-
-
+package com.shrutipandit.gotopacademy.ui
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shrutipandit.gotopacademy.db.NoticeItem
-import com.shrutipandit.gotopacademy.databinding.ActivityResultBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.adapter.NoticeAdapterN
+import com.shrutipandit.gotopacademy.databinding.FragmentNoticeBinding
+import com.shrutipandit.gotopacademy.db.NoticeItem
 
-class Result : AppCompatActivity() {
-    private lateinit var binding: ActivityResultBinding
+
+class NoticeFragment : Fragment(R.layout.fragment_notice) {
+    private lateinit var binding: FragmentNoticeBinding
+
     private lateinit var db: DatabaseReference
     private lateinit var arrayList: ArrayList<NoticeItem>
     private lateinit var noticeAdapter: NoticeAdapterN
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentNoticeBinding.bind(view)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityResultBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        db = FirebaseDatabase.getInstance().reference.child("Result")
+        db = FirebaseDatabase.getInstance().reference.child("Notice")
         arrayList = arrayListOf()
 
-
-
-        noticeAdapter = NoticeAdapterN(arrayList,this@Result)
+        noticeAdapter = NoticeAdapterN(arrayList, requireContext())
         binding.recyclerview.adapter = noticeAdapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(this)
-
-
-
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         fetchNotice()
+
+
     }
 
     private fun fetchNotice() {
         db.addValueEventListener(object : ValueEventListener {
+            @RequiresApi(Build.VERSION_CODES.O)
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -56,8 +57,8 @@ class Result : AppCompatActivity() {
 
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
+                        arrayList.add(NoticeItem(img, pdf, title, link, date!!))
 
-                        arrayList.add(NoticeItem(img, pdf, title, link,date!!))
 
                     }
 
@@ -65,13 +66,12 @@ class Result : AppCompatActivity() {
                 }
             }
 
-
             override fun onCancelled(error: DatabaseError) {
-
+                // Handle onCancelled
             }
         })
     }
 
-}
 
+}
 
