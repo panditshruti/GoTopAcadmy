@@ -41,7 +41,7 @@ class UserRepository {
             }
     }
 
-    fun isUserAlreadyLogin():Boolean{
+    fun isUserAlreadyLogin(): Boolean {
         return auth.currentUser == null
     }
 
@@ -49,6 +49,19 @@ class UserRepository {
         auth.signOut()
         callback.onSuccess()
     }
+
+    fun resetPassword(email: String, callback: Callback) {
+        auth.sendPasswordResetEmail(email).addOnSuccessListener {
+
+            callback.onSuccess()
+        }
+            .addOnFailureListener {
+                callback.onFailure(it)
+            }
+
+    }
+
+
     interface Callback {
         fun onSuccess()
         fun onFailure(exception: Exception)

@@ -22,5 +22,8 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     fun  signOutUser(callback: UserRepository.Callback){
         repository.signOutUser(callback)
     }
+  fun  resetPassword(email:String,callback: UserRepository.Callback){
+        repository.resetPassword(email,callback)
+    }
 
 }

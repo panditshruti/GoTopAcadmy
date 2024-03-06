@@ -55,7 +55,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 findNavController().navigate(action)
 
             }
+
+            forgetPassTvLogin.setOnClickListener {
+               val callback = object : UserRepository.Callback {
+                    override fun onSuccess() {
+                        Toast.makeText(requireContext(), "check your mail id", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                    override fun onFailure(exception: Exception) {
+                        Toast.makeText(requireContext(), exception.message.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+                authViewModel.resetPassword(emailIdLogin.text.toString().trim(),callback)
+
+            }
         }
+
+
 
 
     }

@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="10dp"
-        android:text="Easy Stude Proceed with App....."
+        android:text="Easy Study Proceed with App....."
         android:layout_gravity="start"
         android:textSize="13dp"
         />
@@ -81,6 +81,19 @@
         android:inputType="textPassword"
         android:textSize="16dp"
         />
+
+    <TextView
+        android:id="@+id/forgetPassTvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Forget Password"
+        android:layout_gravity="end"
+        android:textSize="13dp"
+        />
+
 
 
     <androidx.appcompat.widget.AppCompatButton
