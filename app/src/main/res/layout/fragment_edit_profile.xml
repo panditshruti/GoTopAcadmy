@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="#D6E9F8"
+    android:background="#003E70"
     tools:context=".activity.EditProfile">
 
     <androidx.cardview.widget.CardView

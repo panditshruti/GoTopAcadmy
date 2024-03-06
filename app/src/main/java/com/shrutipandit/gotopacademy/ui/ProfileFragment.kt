@@ -1,18 +1,24 @@
-package com.shrutipandit.gotopacademy.activity
+package com.shrutipandit.gotopacademy.ui
 
+import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import com.shrutipandit.gotopacademy.databinding.ActivityProfileBinding
+import androidx.navigation.fragment.findNavController
+import com.shrutipandit.gotopacademy.R
+import com.shrutipandit.gotopacademy.databinding.FragmentProfileBinding
 import com.squareup.picasso.Picasso
 
-class Profile : AppCompatActivity() {
-    private lateinit var binding: ActivityProfileBinding
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
+
+    private lateinit var binding: FragmentProfileBinding
+
     private val UPDATE_PROFILE_REQUEST = 1
     private var isEditing = false
     private var selectedImageUri: Uri? = null
@@ -31,12 +37,11 @@ class Profile : AppCompatActivity() {
             }
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityProfileBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentProfileBinding.bind(view)
 
-        val sharedPreferences = getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
+        val sharedPreferences = requireActivity().getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
         val name = sharedPreferences.getString("NAME", "")
         val fatherName = sharedPreferences.getString("FATHER", "")
         val phone = sharedPreferences.getString("PHONE", "")
@@ -49,16 +54,16 @@ class Profile : AppCompatActivity() {
         val city = sharedPreferences.getString("CITY", "")
 
         if (!isEditing) {
-            binding.name.text = name.toString()
-            binding.fatherName.text = fatherName.toString()
-            binding.email.text = email.toString()
-            binding.call.text = phone.toString()
-            binding.dob.text = dob.toString()
-            binding.pincode.text = pinCode.toString()
-            binding.village.text = village.toString()
-            binding.state.text = state.toString()
-            binding.country.text = country.toString()
-            binding.city.text = city.toString()
+            binding.name.text = name
+            binding.fatherName.text = fatherName
+            binding.email.text = email
+            binding.call.text = phone
+            binding.dob.text = dob
+            binding.pincode.text = pinCode
+            binding.village.text = village
+            binding.state.text = state
+            binding.country.text = country
+            binding.city.text = city
         }
 
         binding.imagechoose.setOnClickListener {
@@ -77,8 +82,8 @@ class Profile : AppCompatActivity() {
             binding.country.text = ""
             binding.city.text = ""
 
-            val intent = Intent(this, UpdateProfile::class.java)
-            startActivityForResult(intent, UPDATE_PROFILE_REQUEST)
+            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment()
+            findNavController().navigate(action)
         }
     }
 
@@ -101,19 +106,17 @@ class Profile : AppCompatActivity() {
             val updatedState = data?.getStringExtra("updatedState")
             val updatedCity = data?.getStringExtra("updatedCity")
 
-            runOnUiThread {
-                binding.name.text = updatedName
-                binding.fatherName.text = updatedFatherName
-                binding.email.text = updatedEmail
-                binding.call.text = updatedPhone
-                binding.dob.text = updatedDob
-                binding.pincode.text = updatedPincode
-                binding.village.text = updatedVillage
-                binding.state.text = updatedState
-                binding.city.text = updatedCity
-                binding.country.text = updatedCountry
-                binding.state.text = updatedState
-            }
+            binding.name.text = updatedName
+            binding.fatherName.text = updatedFatherName
+            binding.email.text = updatedEmail
+            binding.call.text = updatedPhone
+            binding.dob.text = updatedDob
+            binding.pincode.text = updatedPincode
+            binding.village.text = updatedVillage
+            binding.state.text = updatedState
+            binding.city.text = updatedCity
+            binding.country.text = updatedCountry
+            binding.state.text = updatedState
 
             isEditing = true
         }

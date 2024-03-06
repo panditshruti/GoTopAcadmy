@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     android:scrollbars="none"
+    android:background="@drawable/blury_background"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="50dp"
+        android:layout_gravity="start"
+        android:src="@drawable/logogotop"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GoTop Academy"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:layout_gravity="start"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="10dp"
+        android:text="Easy Stude Proceed with App....."
+        android:layout_gravity="start"
+        android:textSize="13dp"
+        />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text=" .Let's Login"
+        android:drawableStart="@drawable/ic_kleine_shape"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/nameSignUp"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:background="#E1E5FA"
+        android:hint="Name"
+        android:inputType="text"
+        android:textSize="16dp"
+        />
+    <EditText
+        android:id="@+id/fatherNameSignUp"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:background="#E1E5FA"
+        android:hint="Father's Name"
+        android:inputType="text"
+        android:textSize="16dp"
+        />
+    <EditText
+        android:id="@+id/mobNoSignUp"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:background="#E1E5FA"
+        android:hint="Mobile No"
+        android:inputType="number"
+        android:textSize="16dp"
+        />
+    <EditText
+        android:id="@+id/addressSignUp"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:background="#E1E5FA"
+        android:hint="Address"
+        android:inputType="text"
+        android:textSize="16dp"
+        />
+
+    <EditText
+        android:id="@+id/emailSignUp"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#E1E5FA"
+        android:hint="Email Id"
+        android:inputType="textEmailAddress"
+        android:textSize="16dp"
+        />
+ <EditText
+        android:id="@+id/createPasswordSignUp"
+        style="@style/editText"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#E1E5FA"
+        android:hint="Create password"
+        android:inputType="textPassword"
+        android:textSize="16dp"
+        />
+    <EditText
+        android:id="@+id/conformPasswordSignUp"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#E1E5FA"
+        android:hint="Conform Password"
+        android:inputType="textPassword"
+        android:textSize="16dp"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signUpBtn"
+        style="@style/blueButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="176dp"
+        android:background="@color/purple_700"
+        android:layout_margin="10dp"
+        android:text="Create Account"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+    </LinearLayout>
+</ScrollView>

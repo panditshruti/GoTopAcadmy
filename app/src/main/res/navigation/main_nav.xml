@@ -21,6 +21,18 @@
         <action
             android:id="@+id/action_homeFragment_to_allFormFragment"
             app:destination="@id/allFormFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_helpCenterFragment"
+            app:destination="@id/helpCenterFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_logOutFragment"
+            app:destination="@id/logOutFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -42,4 +54,37 @@
         android:name="com.shrutipandit.gotopacademy.ui.AllFormFragment"
         android:label="Form Fill"
         tools:layout="@layout/fragment_all_form" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/helpCenterFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.HelpCenterFragment"
+        android:label="fragment_help_center"
+        tools:layout="@layout/fragment_help_center" />
+    <fragment
+        android:id="@+id/logOutFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.LogOutFragment"
+        android:label="fragment_log_out"
+        tools:layout="@layout/fragment_log_out" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
