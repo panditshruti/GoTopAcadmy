@@ -39,7 +39,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
               authViewModel.registerUser(
                   email = emailSignUp.text.toString().trim(),
                   password = createPasswordSignUp.text.toString(),
-                  profile = Profile(nameSignUp.text.toString().trim(),fatherNameSignUp.text.toString().trim(),mobNoSignUp.text.toString().trim(),addressSignUp.text.toString().trim(),"No Dp"),
+                  profile = Profile(nameSignUp.text.toString().trim(),fatherNameSignUp.text.toString().trim(),mobNoSignUp.text.toString().trim(),addressSignUp.text.toString().trim(),emailSignUp.text.toString().trim(),""),
                   callback = object : UserRepository.Callback {
                       override fun onSuccess() {
                           val intent = Intent(requireContext(), MainActivity::class.java)

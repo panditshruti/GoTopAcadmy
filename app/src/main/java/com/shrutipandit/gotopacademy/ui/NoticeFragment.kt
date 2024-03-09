@@ -54,10 +54,11 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
                         val img = data.child("imageUrl").value as? String
                         val pdf = data.child("pdfUrl").value as? String
                         val date = data.child("date").value as? String
+                        val prise = data.child("prise").value as? String
 
                         Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
-                        arrayList.add(NoticeItem(img, pdf, title, link, date!!))
+                        arrayList.add(NoticeItem(img, pdf, title, link, prise,date!!))
 
 
                     }

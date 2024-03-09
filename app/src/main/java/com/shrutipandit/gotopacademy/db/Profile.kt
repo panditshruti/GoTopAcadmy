@@ -5,5 +5,6 @@ data class Profile(
     val fatherName:String,
     val mobNo:String,
     val address:String,
+    val email:String,
     val userDp:String
 )

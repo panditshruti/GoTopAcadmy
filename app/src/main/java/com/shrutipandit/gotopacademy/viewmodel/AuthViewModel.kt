@@ -26,4 +26,9 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
         repository.resetPassword(email,callback)
     }
 
+    fun getCurrentUserProfile(callback: UserRepository.ProfileCallback){
+        repository.getCurrentUserProfile(callback)
+    }
+
+
 }

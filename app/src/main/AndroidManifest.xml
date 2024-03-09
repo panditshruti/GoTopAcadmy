@@ -25,21 +25,11 @@
         <activity
             android:name=".activity.EditProfile"
             android:exported="false" />
-        <activity
-            android:name=".activity.School"
-            android:exported="false" />
-        <activity
-            android:name=".activity.Library"
-            android:exported="false" />
-        <activity
-            android:name=".activity.News"
-            android:exported="false" />
+
         <activity
             android:name=".activity.UpdateProfile"
             android:exported="false" />
-        <activity
-            android:name=".activity.Profile"
-            android:exported="false" />
+
         <activity
             android:name=".activity.LogInPage"
             android:exported="true">
@@ -48,18 +38,12 @@
         <activity
             android:name=".activity.PdfViewActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.Notice"
-            android:exported="false" />
+
         <activity
             android:name=".activity.About"
             android:exported="false" />
-        <activity
-            android:name=".activity.Result"
-            android:exported="false" />
-        <activity
-            android:name=".activity.Form"
-            android:exported="false" />
+
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" >

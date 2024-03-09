@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_homeFragment_to_logOutFragment"
             app:destination="@id/logOutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -87,4 +90,9 @@
             android:id="@+id/action_editProfileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.shrutipandit.gotopacademy.ui.BookFragment"
+        android:label="fragment_book"
+        tools:layout="@layout/fragment_book" />
 </navigation>

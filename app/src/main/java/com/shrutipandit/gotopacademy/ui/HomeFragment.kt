@@ -73,5 +73,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val action = HomeFragmentDirections.actionHomeFragmentToNewsFragment2()
             findNavController().navigate(action)
         }
+        binding.book.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToBookFragment()
+            findNavController().navigate(action)
+        }
     }
 }

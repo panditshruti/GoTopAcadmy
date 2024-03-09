@@ -60,7 +60,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                val callback = object : UserRepository.Callback {
                     override fun onSuccess() {
                         Toast.makeText(requireContext(), "check your mail id", Toast.LENGTH_SHORT).show()
-
+                        forgetPassTvLogin.isClickable = false
                     }
 
                     override fun onFailure(exception: Exception) {
