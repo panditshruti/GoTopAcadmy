@@ -77,5 +77,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val action = HomeFragmentDirections.actionHomeFragmentToBookFragment()
             findNavController().navigate(action)
         }
+        binding.dpp.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDppFragment()
+            findNavController().navigate(action)
+        }
+   binding.stanza.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToStanzaFragment()
+            findNavController().navigate(action)
+        }
+
+
     }
 }

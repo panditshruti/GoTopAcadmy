@@ -354,10 +354,11 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/dpp"
+                        android:layout_gravity="center"
                         android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/dpp"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_marginStart="16dp"
@@ -365,7 +366,7 @@
                             android:layout_margin="10dp"
                             app:civ_border_width="1dp"
                             app:layout_constraintBottom_toBottomOf="@id/roundlinear"
-                            app:layout_constraintEnd_toStartOf="@id/sayari"
+                            app:layout_constraintEnd_toStartOf="@id/stanza"
                             app:layout_constraintHorizontal_bias="0.826"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@id/roundlinear"
@@ -453,7 +454,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_marginStart="16dp"
-                            android:src="@drawable/notes"
+                            android:src="@drawable/que"
                             app:civ_border_width="1dp"
                             android:layout_margin="10dp"
                             app:layout_constraintBottom_toBottomOf="@id/roundlinear"
@@ -477,11 +478,12 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/stanza"
                         android:orientation="vertical">
 
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/sayari"
+
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_marginStart="16dp"
@@ -518,7 +520,7 @@
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_marginStart="16dp"
-                            android:src="@drawable/sayri"
+                            android:src="@drawable/search2"
                             android:layout_margin="10dp"
                             app:civ_border_width="1dp"
                             app:layout_constraintBottom_toBottomOf="@id/roundlinear"
@@ -537,7 +539,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:gravity="center"
-                            android:text="Stanza" />
+                            android:text="Search" />
 
                     </LinearLayout>
                 </LinearLayout>
