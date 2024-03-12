@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.UserRepository
 import com.shrutipandit.gotopacademy.databinding.FragmentProfileBinding
@@ -22,10 +23,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProfileBinding.bind(view)
-
         val userRepository = UserRepository()
         val viewModelFactory = AuthViewModelFactory(userRepository)
         authViewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
+
+        binding.editBtn.setOnClickListener {
+            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment()
+            findNavController().navigate(action)
+        }
 
         authViewModel.getCurrentUserProfile(callback = object : UserRepository.ProfileCallback {
             override fun onSuccess(profile: Profile) {

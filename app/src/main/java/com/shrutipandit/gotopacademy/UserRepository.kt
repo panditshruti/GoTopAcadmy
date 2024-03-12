@@ -93,6 +93,10 @@ class UserRepository {
             callback.onFailure(Exception("User not logged in"))
         }
     }
+    fun  updateProfile(){
+
+
+    }
 
     interface Callback {
         fun onSuccess()

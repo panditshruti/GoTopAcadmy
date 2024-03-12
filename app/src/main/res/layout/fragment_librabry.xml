@@ -155,7 +155,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="Library "
-                                android:textColor="#BC7000"
+                                android:textColor="#198E1D"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -166,7 +166,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="Type Of Time "
-                                android:textColor="#BC7000"
+                                android:textColor="#198E1D"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
                         </LinearLayout>

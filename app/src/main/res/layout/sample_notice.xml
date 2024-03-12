@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:backgroundTint="#EDE9CE"
+    android:backgroundTint="#EAE5C1"
     android:elevation="5dp"
     app:cardCornerRadius="15dp"
     >
@@ -19,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/strok"
+        android:padding="10dp"
         tools:ignore="MissingClass">
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
             android:layout_width="match_parent"
             android:src="@drawable/img1"
             android:layout_margin="10dp"
-            android:layout_height="400dp"
+            android:layout_height="300dp"
           />
 
        <ImageView

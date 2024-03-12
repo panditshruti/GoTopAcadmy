@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#FFFCDD"
+
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
@@ -77,18 +77,25 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="10dp"
                 android:padding="10dp"
-                android:backgroundTint="#938400"
+                android:backgroundTint="#887A00"
                 android:layout_margin="5dp"
                 android:elevation="8dp"
                 app:cardElevation="8dp"
                 tools:ignore="MissingClass">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/strok"
+                    android:layout_height="wrap_content"
+                    >
+
+
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
-
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
 
@@ -98,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_margin="10dp"
-                android:backgroundTint="#FFFCDD"
+                android:backgroundTint="#F8F4D4"
                 android:elevation="10dp"
                 android:padding="10dp"
                 app:cardCornerRadius="10dp"
@@ -111,9 +118,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="#FFFCDD"
+                    android:background="@drawable/strok"
                     android:gravity="bottom"
                     android:orientation="vertical">
 
@@ -307,8 +313,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:background="#FAF7D8"
+                    android:background="@drawable/strok"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="5dp"
@@ -327,7 +332,6 @@
 
 
                         <de.hdodenhof.circleimageview.CircleImageView
-
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_marginStart="16dp"
@@ -433,8 +437,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:background="#FAF7D8"
+                    android:background="@drawable/strok"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="5dp"

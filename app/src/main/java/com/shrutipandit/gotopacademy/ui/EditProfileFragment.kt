@@ -1,72 +1,68 @@
 package com.shrutipandit.gotopacademy.ui
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.FirebaseDatabase
 import com.shrutipandit.gotopacademy.R
+import com.shrutipandit.gotopacademy.UserRepository
 import com.shrutipandit.gotopacademy.databinding.FragmentEditProfileBinding
+import com.shrutipandit.gotopacademy.db.Profile
+import com.shrutipandit.gotopacademy.viewmodel.AuthViewModel
+import com.shrutipandit.gotopacademy.viewmodel.AuthViewModelFactory
 
 class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
     private lateinit var binding: FragmentEditProfileBinding
+    private lateinit var authViewModel: AuthViewModel
+    private lateinit var userRepository: UserRepository
+    private lateinit var db: FirebaseDatabase
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditProfileBinding.bind(view)
 
-        // Populate the fields with existing data from SharedPreferences
-        val sharedPreferences = requireActivity().getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
-        binding.name.setText(sharedPreferences.getString("NAME", ""))
-        binding.fatherName.setText(sharedPreferences.getString("FATHER", ""))
-        binding.email.setText(sharedPreferences.getString("EMAIL", ""))
-        binding.phone.setText(sharedPreferences.getString("PHONE", ""))
-        binding.dob.setText(sharedPreferences.getString("DOB", ""))
-        binding.pinCode.setText(sharedPreferences.getString("PINCODE", ""))
-        binding.village.setText(sharedPreferences.getString("VILLAGE", ""))
-        binding.state.setText(sharedPreferences.getString("STATE", ""))
-        binding.country.setText(sharedPreferences.getString("COUNTRY", ""))
-        binding.city.setText(sharedPreferences.getString("CITY", ""))
+        // Correctly initialize FirebaseDatabase
+        db = FirebaseDatabase.getInstance()
+
+        userRepository = UserRepository()
+        val viewModelFactory = AuthViewModelFactory(userRepository)
+        authViewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
 
         binding.submitbtn.setOnClickListener {
-            // Save the edited data to SharedPreferences
-            val editor = sharedPreferences.edit()
-            editor.putString("NAME", binding.name.text.toString())
-            editor.putString("FATHER", binding.fatherName.text.toString())
-            editor.putString("EMAIL", binding.email.text.toString())
-            editor.putString("PHONE", binding.phone.text.toString())
-            editor.putString("DOB", binding.dob.text.toString())
-            editor.putString("PINCODE", binding.pinCode.text.toString())
-            editor.putString("VILLAGE", binding.village.text.toString())
-            editor.putString("STATE", binding.state.text.toString())
-            editor.putString("COUNTRY", binding.country.text.toString())
-            editor.putString("CITY", binding.city.text.toString())
-            editor.apply()
+            // Get updated profile details from the UI
+            val updatedProfile = getUpdatedProfile()
 
-            // Create the intent with updated data
-            val updatedIntent = Bundle().apply {
-                putString("UpdatedName", binding.name.text.toString())
-                putString("UpdatedFatherName", binding.fatherName.text.toString())
-                putString("UpdatedEmail", binding.email.text.toString())
-                putString("updatedPhone", binding.phone.text.toString())
-                putString("updatedDob", binding.dob.text.toString())
-                putString("updatedPincode", binding.pinCode.text.toString())
-                putString("updatedVillage", binding.village.text.toString())
-                putString("updatedCountry", binding.country.text.toString())
-                putString("updatedState", binding.state.text.toString())
-                putString("updatedCity", binding.city.text.toString())
-            }
+            // Update the profile in Firebase
+            authViewModel.updateUserProfile(updatedProfile, object : UserRepository.Callback {
+                override fun onSuccess() {
+                    // Profile updated successfully
+                    Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                    findNavController().navigateUp() // Navigate back to ProfileFragment
+                }
 
-            // Navigate to the ProfileFragment after saving the data
-            findNavController().navigate(
-                R.id.action_editProfileFragment_to_homeFragment,
-                updatedIntent
-            )
-
-            // Set the result and finish the activity
-            requireActivity().setResult(Activity.RESULT_OK)
-            requireActivity().finish()
+                override fun onFailure(exception: Exception) {
+                    // Handle failure
+                    Log.e("EditProfileFragment", "Failed to update profile: ${exception.message}")
+                    Toast.makeText(requireContext(), "Failed to update profile", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
+    }
+
+    private fun getUpdatedProfile(): Profile {
+        // Implement logic to fetch updated profile details from the UI components
+        // For example:
+        val name = binding.name.text.toString()
+        val fatherName = binding.fatherName.text.toString()
+        val emailid = binding.email.text.toString()
+        val mobile = binding.phone.text.toString()
+        val address = binding.address.text.toString()
+        // ... and so on
+
+        return Profile(name, fatherName, mobile, address, emailid, "")
     }
 }

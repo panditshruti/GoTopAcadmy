@@ -85,6 +85,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val action = HomeFragmentDirections.actionHomeFragmentToStanzaFragment()
             findNavController().navigate(action)
         }
+        binding.search.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+            findNavController().navigate(action)
+        }
+  binding.notes.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToNotesFragment()
+            findNavController().navigate(action)
+        }
+        binding.faq.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToFaqFragment()
+            findNavController().navigate(action)
+        }
 
 
     }

@@ -136,204 +136,28 @@
                                 android:inputType="number"
                                 android:padding="10dp" />
                         </com.google.android.material.textfield.TextInputLayout>
-
-                        <LinearLayout
+      <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputLayoutaddress"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="10dp"
-                                android:orientation="vertical"
-                                >
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/textInputLayoutdob"
-                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:boxStrokeColor="#C6B200"
-                                    app:boxStrokeWidth="2dp"
-                                    android:layout_weight="1"
-                                    app:errorEnabled="true"
-                                    app:errorTextColor="#BF0000"
-                                    app:hintTextColor="@color/black">
+                            app:boxStrokeColor="#C6B200"
+                            app:boxStrokeWidth="2dp"
+                            app:errorEnabled="true"
+                            app:errorTextColor="#BF0000"
+                            app:hintTextColor="@color/black">
 
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/dob"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:hint="Enter D.O.B"
-                                        android:layout_weight="1"
-                                        android:inputType="text"
-                                        android:padding="10dp" />
-
-                                </com.google.android.material.textfield.TextInputLayout>
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/textInputLayoutpinCode"
-                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:boxStrokeColor="#C6B200"
-                                    app:boxStrokeWidth="2dp"
-                                    android:layout_weight="1"
-                                    app:errorEnabled="true"
-                                    app:errorTextColor="#BF0000"
-                                    app:hintTextColor="@color/black">
-
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/pinCode"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:hint="Enter Pin Code"
-                                        android:layout_weight="1"
-                                        android:inputType="number"
-                                        android:padding="10dp" />
-
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginStart="10dp"
-                                android:orientation="vertical"
-                                >
-                                <TextView
-                                    android:id="@+id/optionSelectedTextviewForm"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-
-                                    android:text="Gendar"
-                                    />
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    >
-                                    <CheckBox
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Male"
-                                        android:id="@+id/male"
-                                        />
-                                    <CheckBox
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Female"
-                                        android:id="@+id/female"
-                                        />
-                                </LinearLayout>
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutVillage"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/address"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:boxStrokeColor="#C6B200"
-                                android:layout_margin="5dp"
-                                app:boxStrokeWidth="2dp"
-                                android:layout_weight="1"
-                                app:errorEnabled="true"
-                                app:errorTextColor="#BF0000"
-                                app:hintTextColor="@color/black">
+                                android:drawableEnd="@drawable/baseline_call_24"
+                                android:hint="Enter Your Address"
+                                android:inputType="number"
+                                android:padding="10dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/village"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Enter Village"
-                                    android:layout_weight="1"
-                                    android:inputType="text"
-                                    android:padding="10dp" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutCounty"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:boxStrokeColor="#C6B200"
-                                app:boxStrokeWidth="2dp"
-                                android:layout_weight="1"
-                                android:layout_margin="5dp"
-                                app:errorEnabled="true"
-                                app:errorTextColor="#BF0000"
-                                app:hintTextColor="@color/black">
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/country"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Enter Country"
-                                    android:layout_weight="1"
-                                    android:inputType="text"
-                                    android:padding="10dp" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutstate"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:boxStrokeColor="#C6B200"
-                                android:layout_margin="5dp"
-                                app:boxStrokeWidth="2dp"
-                                android:layout_weight="1"
-                                app:errorEnabled="true"
-                                app:errorTextColor="#BF0000"
-                                app:hintTextColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/state"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Enter State"
-                                    android:layout_weight="1"
-                                    android:inputType="text"
-                                    android:padding="10dp" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutCity"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:boxStrokeColor="#C6B200"
-                                app:boxStrokeWidth="2dp"
-                                android:layout_weight="1"
-                                android:layout_margin="5dp"
-                                app:errorEnabled="true"
-                                app:errorTextColor="#BF0000"
-                                app:hintTextColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/city"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Enter City"
-                                    android:layout_weight="1"
-                                    android:inputType="text"
-                                    android:padding="10dp" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
 
 
                     </LinearLayout>

@@ -156,7 +156,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="Addmission Class "
-                                android:textColor="#BC7000"
+                                android:textColor="#E91E63"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
 
@@ -167,7 +167,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="Type Of Class "
-                                android:textColor="#BC7000"
+                                android:textColor="#E91E63"
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
