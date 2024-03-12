@@ -33,36 +33,8 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
         authViewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
 
         binding.submitbtn.setOnClickListener {
-            // Get updated profile details from the UI
-            val updatedProfile = getUpdatedProfile()
 
-            // Update the profile in Firebase
-            authViewModel.updateUserProfile(updatedProfile, object : UserRepository.Callback {
-                override fun onSuccess() {
-                    // Profile updated successfully
-                    Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
-                    findNavController().navigateUp() // Navigate back to ProfileFragment
-                }
-
-                override fun onFailure(exception: Exception) {
-                    // Handle failure
-                    Log.e("EditProfileFragment", "Failed to update profile: ${exception.message}")
-                    Toast.makeText(requireContext(), "Failed to update profile", Toast.LENGTH_SHORT).show()
-                }
-            })
         }
     }
 
-    private fun getUpdatedProfile(): Profile {
-        // Implement logic to fetch updated profile details from the UI components
-        // For example:
-        val name = binding.name.text.toString()
-        val fatherName = binding.fatherName.text.toString()
-        val emailid = binding.email.text.toString()
-        val mobile = binding.phone.text.toString()
-        val address = binding.address.text.toString()
-        // ... and so on
-
-        return Profile(name, fatherName, mobile, address, emailid, "")
-    }
 }
