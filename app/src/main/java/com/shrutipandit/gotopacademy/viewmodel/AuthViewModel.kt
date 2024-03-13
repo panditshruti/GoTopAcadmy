@@ -29,6 +29,9 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     fun getCurrentUserProfile(callback: UserRepository.ProfileCallback){
         repository.getCurrentUserProfile(callback)
     }
+    fun updateUserProfile(profile: Profile,callback: UserRepository.Callback){
+        repository.updateProfile(profile,callback)
+    }
 
 
 }

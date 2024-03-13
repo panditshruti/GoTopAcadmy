@@ -1,60 +1,45 @@
 package com.shrutipandit.gotopacademy.ui
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.shrutipandit.gotopacademy.R
+import com.shrutipandit.gotopacademy.databinding.FragmentHelpCenterBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HelpCenterFragment : Fragment(R.layout.fragment_help_center) {
+    private lateinit var binding: FragmentHelpCenterBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HelpCenterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HelpCenterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentHelpCenterBinding.bind(view)
+        binding.gmail.setOnClickListener {
+            val email = "gotopacademy004@gmail.com"
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:$email")
+            }
+            startActivity(intent)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        binding.call.setOnClickListener {
+            val phoneNumber = "9708379004"
+            copyToClipboard(phoneNumber)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_help_center, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HelpCenterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HelpCenterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun copyToClipboard(text: String) {
+        val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("phoneNumber", text)
+        clipboard.setPrimaryClip(clip)
+        // Show a toast message to inform the user that the text has been copied
+        // You can customize this message according to your app's requirements
+        Toast.makeText(requireContext(), "Copied: $text", Toast.LENGTH_SHORT).show()
     }
 }

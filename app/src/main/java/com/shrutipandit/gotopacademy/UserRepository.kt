@@ -61,6 +61,7 @@ class UserRepository {
                 callback.onFailure(it)
             }
     }
+
     fun getCurrentUserProfile(callback: ProfileCallback) {
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -74,9 +75,18 @@ class UserRepository {
                         val address = snapshot.child("address").getValue(String::class.java)
                         val email = snapshot.child("email").getValue(String::class.java)
 
-                        if (name != null && fatherName != null && mobNo !=    null && address != null &&  email != null) {
+                        if (name != null && fatherName != null && mobNo != null && address != null && email != null) {
                             val profile =
-                                address?.let { Profile(name, fatherName, mobNo, address,email,"") } // Replace "" with the appropriate field from your Profile class
+                                address?.let {
+                                    Profile(
+                                        name,
+                                        fatherName,
+                                        mobNo,
+                                        address,
+                                        email,
+                                        ""
+                                    )
+                                } // Replace "" with the appropriate field from your Profile class
                             if (profile != null) {
                                 callback.onSuccess(profile)
                             }
@@ -93,15 +103,28 @@ class UserRepository {
             callback.onFailure(Exception("User not logged in"))
         }
     }
-    fun  updateProfile(){
 
-
+    fun updateProfile(profile: Profile, callback: Callback) {
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            firebaseDatabase.child("users")
+                .child(userId)
+                .setValue(profile)
+                .addOnSuccessListener {
+                    callback.onSuccess()
+                }
+                .addOnFailureListener { exception ->
+                    callback.onFailure(exception)
+                }
+        }
     }
+
 
     interface Callback {
         fun onSuccess()
         fun onFailure(exception: Exception)
     }
+
     interface ProfileCallback {
         fun onSuccess(profile: Profile)
         fun onFailure(exception: Exception)

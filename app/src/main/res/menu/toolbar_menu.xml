@@ -14,7 +14,7 @@
             />
         <item
             android:title="Help Us"
-            android:id="@+id/helhelpCenterFragment"
+            android:id="@+id/helpCenterFragment"
             android:icon="@drawable/baseline_live_help_24"
             />
     <item
