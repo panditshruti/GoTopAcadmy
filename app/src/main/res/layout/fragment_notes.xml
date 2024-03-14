@@ -1,12 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FFFFFF"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.NotesFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/mynotes"
+        android:layout_margin="10dp"
+        />
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#E1DEDE"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+         <com.ortiz.touchview.TouchImageView
+    android:layout_width="200dp"
+    android:layout_height="250dp"
+             android:layout_margin="10dp"
+    android:src="@drawable/n1"
+    />
+        <com.ortiz.touchview.TouchImageView
+    android:layout_width="200dp"
+            android:layout_margin="10dp"
+    android:layout_height="250dp"
+    android:src="@drawable/n1"
+    />
+        <com.ortiz.touchview.TouchImageView
+    android:layout_width="200dp"
+    android:layout_height="250dp"
+            android:layout_margin="10dp"
+    android:src="@drawable/n1"
+    />
+        <com.ortiz.touchview.TouchImageView
+    android:layout_width="200dp"
+    android:layout_height="250dp"
+            android:layout_margin="10dp"
+    android:src="@drawable/n1"
+    />
 
 
+    </LinearLayout>
 
-</LinearLayout>
+
+</HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_margin="10dp"
+            android:text="Notes Prise is ₹100 but 40% discount\n              so pay only ₹60!"
+            android:textColor="#FF0000"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="To ask any question related on\n       this notes click this link!"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/rspaynote"
+                android:text="https://wa.me/+7739717389"
+                android:textColor="@color/purple_700"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+        android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="payment on this number:-"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/paynote"
+                android:text="7739717389"
+                android:textColor="@color/purple_700"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

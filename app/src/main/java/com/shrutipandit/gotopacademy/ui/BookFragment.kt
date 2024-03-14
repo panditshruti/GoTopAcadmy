@@ -56,7 +56,7 @@ class BookFragment : Fragment(R.layout.fragment_book) {
                                 Log.d("Notice", "Title: $title, Link: $link, Image: $img, PDF: $pdf")
 
 
-                                arrayList.add(NoticeItem(img, pdf, title, link, prise,date!!))
+                                arrayList.add(NoticeItem(img, pdf, title, link, "₹:-"+prise,date!!))
 
                             }
 

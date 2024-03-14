@@ -229,14 +229,15 @@
                             android:padding="10dp"
                             android:layout_margin="10dp"
                             android:background="#F8F5F5" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_gravity="center"
                             android:layout_height="wrap_content"
+                            android:textStyle="bold"
                             android:text="Test Fee:₹10 but 50% discount\n              so pay only ₹5!"
                               android:textColor="#FF0000"
                             />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_margin="10dp"
@@ -260,6 +261,7 @@
                             />
 
                     </LinearLayout>
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
