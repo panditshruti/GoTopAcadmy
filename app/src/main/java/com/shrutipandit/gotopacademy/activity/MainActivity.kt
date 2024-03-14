@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.UserRepository
@@ -29,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
 
         val userRepository = UserRepository()
@@ -54,55 +55,36 @@ class MainActivity : AppCompatActivity() {
                 R.id.newsFragment
             )
         )
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+        binding.toolbar.setupWithNavController(navController)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
-        return true
+        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.profileFragment -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment()
-                navController.navigate(action)
-                true
+        return item.onNavDestinationSelected(navController)||super.onOptionsItemSelected(item)
+    }
+    fun logOut(){
+        authViewModel.signOutUser(object :UserRepository.Callback{
+            override fun onSuccess() {
+                val intent = Intent (this@MainActivity,LogInPage::class.java)
+                startActivity(intent)
+                finish()
             }
 
-            R.id.aboutUsFragment -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToAboutUsFragment()
-                navController.navigate(action)
-                true
+            override fun onFailure(exception: Exception) {
+                Toast.makeText(this@MainActivity, exception.message.toString(), Toast.LENGTH_SHORT).show()
             }
 
-            R.id.helpCenterFragment -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToHelpCenterFragment()
-                navController.navigate(action)
-                true
-            }
 
-            R.id.logOutFragment -> {
-                 authViewModel.signOutUser(object :UserRepository.Callback{
-                     override fun onSuccess() {
-                         val intent = Intent (this@MainActivity,LogInPage::class.java)
-                         startActivity(intent)
-                         finish()
-                     }
+        })
 
-                     override fun onFailure(exception: Exception) {
-                         Toast.makeText(this@MainActivity, exception.message.toString(), Toast.LENGTH_SHORT).show()
-                     }
-
-
-                 })
-
-                true
-            }
-
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
 }

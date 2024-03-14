@@ -6,11 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.databinding.FragmentHelpCenterBinding
 
@@ -20,18 +18,27 @@ class HelpCenterFragment : Fragment(R.layout.fragment_help_center) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHelpCenterBinding.bind(view)
+
         binding.gmail.setOnClickListener {
             val email = "gotopacademy004@gmail.com"
             val intent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:$email")
             }
             startActivity(intent)
-    }
+        }
 
         binding.call.setOnClickListener {
             val phoneNumber = "9708379004"
+            dialPhoneNumber(phoneNumber)
             copyToClipboard(phoneNumber)
         }
+    }
+
+    private fun dialPhoneNumber(phoneNumber: String) {
+        val intent = Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.parse("tel:$phoneNumber")
+        }
+        startActivity(intent)
     }
 
     private fun copyToClipboard(text: String) {

@@ -1,6 +1,7 @@
 package com.shrutipandit.gotopacademy.ui
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -76,6 +77,11 @@ class TestFragment : Fragment() {
             binding.optionSelectedTextviewForm.text = selectedOptionsText.toString()
             Toast.makeText(requireContext(), "Exam Added", Toast.LENGTH_SHORT).show()
         }
+        binding.rspay.setOnClickListener {
+            val link = "https://wa.me/+7739717389"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+            startActivity(intent)
+        }
 
         selectedOptionsText = StringBuilder()
 
@@ -101,6 +107,9 @@ class TestFragment : Fragment() {
                     // Handle when nothing is selected
                 }
             }
+
+
+
     }
 
     private fun updateStateSpinner(selectedCategories: String) {

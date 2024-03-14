@@ -230,11 +230,37 @@
                             android:layout_margin="10dp"
                             android:background="#F8F5F5" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content"
+                            android:text="Test Fee:₹10 but 50% discount\n              so pay only ₹5!"
+                              android:textColor="#FF0000"
+                            />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                            android:text="Click this link to pay:-"
+                              android:textColor="#000000"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/rspay"
+                            android:text="https://wa.me/+7739717389"
+                              android:textColor="@color/purple_700"
+                            />
 
                     </LinearLayout>
-
-
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
 
@@ -253,5 +279,7 @@
 
         </ScrollView>
     </androidx.cardview.widget.CardView>
+
+
 
 </FrameLayout>

@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.searchFragment"
-    android:orientation="horizontal">
+    android:orientation="vertical">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#F6F1C2"
+        android:backgroundTint="#F3D4F8"
         android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
         android:elevation="10dp"
@@ -43,6 +43,48 @@
                 android:id="@+id/linkTranslator"
                 android:layout_margin="10dp"
                 android:text="https://g.co/kgs/Huy4Xmy"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E2FFE3"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="8dp"
+        android:elevation="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/strok"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:textSize="17dp"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:text="Vacancy Search"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/purple_700"
+               android:textSize="15dp"
+                android:id="@+id/vacancySearch"
+                android:layout_margin="10dp"
+                android:text="https://www.sarkariresult.com/"
                 />
 
         </LinearLayout>
