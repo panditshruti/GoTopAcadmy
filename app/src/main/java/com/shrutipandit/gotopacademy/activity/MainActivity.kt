@@ -1,6 +1,7 @@
 package com.shrutipandit.gotopacademy.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return item.onNavDestinationSelected(navController)||super.onOptionsItemSelected(item)
     }
-    fun logOut(){
+    fun logOut(item: MenuItem){
         authViewModel.signOutUser(object :UserRepository.Callback{
             override fun onSuccess() {
                 val intent = Intent (this@MainActivity,LogInPage::class.java)
@@ -86,5 +87,28 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
+
+    fun shareAppLink(item: MenuItem) {
+        val packageName = packageName
+
+        // Create a URI for the app on the Play Store
+        val appStoreUri = Uri.Builder()
+            .scheme("https")
+            .authority("play.google.com")
+            .appendPath("store")
+            .appendPath("apps")
+            .appendPath("details")
+            .appendQueryParameter("id", packageName)
+            .build()
+
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, appStoreUri.toString())
+        }
+
+        startActivity(Intent.createChooser(shareIntent, "Share App Link"))
+    }
+
 
 }
