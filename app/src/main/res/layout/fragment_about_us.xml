@@ -45,7 +45,20 @@
                 android:drawableStart="@drawable/baseline_star_24"
                 android:drawablePadding="8dp" />
 
+            <com.ortiz.touchview.TouchImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:id="@+id/pracharmeapp"
+                android:src="@drawable/myappcl"
+                />
+   <com.ortiz.touchview.TouchImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+       android:id="@+id/devno"
 
+                android:src="@drawable/appprachar"
+                />
 
         </LinearLayout>
     </ScrollView>

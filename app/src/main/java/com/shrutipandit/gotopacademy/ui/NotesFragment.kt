@@ -7,15 +7,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.shrutipandit.gotopacademy.R
 import com.shrutipandit.gotopacademy.databinding.FragmentNotesBinding
 
 class NotesFragment : Fragment(R.layout.fragment_notes) {
-    private lateinit var binding:FragmentNotesBinding
+    private lateinit var binding: FragmentNotesBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,12 +24,12 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
         }
-   binding.paynote.setOnClickListener {
+
+        binding.paynote.setOnLongClickListener {
             val link = "7739717389"
-          copyToClipboard(link)
+            copyToClipboard(link)
+            true // Return true to indicate that the long click event is consumed
         }
-
-
     }
 
     private fun copyToClipboard(text: String) {
