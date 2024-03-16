@@ -35,7 +35,6 @@
             android:textSize="17dp"
             android:textStyle="bold" />
     </LinearLayout>
-
     <!-- Second LinearLayout with contact details -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,9 +75,8 @@
             android:id="@+id/gmail"
             android:drawableStart="@drawable/baseline_email_24"
             android:drawablePadding="8dp"
-            android:text="gotopacademy004@gmail.com"
+            android:text="Open Email:-"
             android:textColor="@color/purple_700"
             android:layout_gravity="start" />
     </LinearLayout>
-
 </LinearLayout>

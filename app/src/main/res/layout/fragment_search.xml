@@ -42,7 +42,7 @@
                android:textSize="15dp"
                 android:id="@+id/linkTranslator"
                 android:layout_margin="10dp"
-                android:text="https://g.co/kgs/Huy4Xmy"
+                android:text="Open Link:-"
                 />
 
         </LinearLayout>
@@ -84,7 +84,7 @@
                android:textSize="15dp"
                 android:id="@+id/vacancySearch"
                 android:layout_margin="10dp"
-                android:text="https://www.sarkariresult.com/"
+                android:text="Open Link:-"
                 />
 
         </LinearLayout>

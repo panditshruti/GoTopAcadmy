@@ -91,7 +91,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/rspaynote"
-                android:text="https://wa.me/+7739717389"
+                android:text="Open link:-"
                 android:textColor="@color/purple_700"
                 />
 

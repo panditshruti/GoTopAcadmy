@@ -34,13 +34,12 @@ class searchFragment : Fragment(R.layout.fragment_search) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                 startActivity(intent)
             }
-    binding.vacancySearch.setOnClickListener {
+
+          binding.vacancySearch.setOnClickListener {
                 val link = "https://www.sarkariresult.com/"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                 startActivity(intent)
             }
-
-
 
         }
     }
