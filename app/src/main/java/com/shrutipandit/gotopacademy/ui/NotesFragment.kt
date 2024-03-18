@@ -36,7 +36,7 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("phoneNumber", text)
         clipboard.setPrimaryClip(clip)
-
         Toast.makeText(requireContext(), "Copied: $text", Toast.LENGTH_SHORT).show()
+
     }
 }

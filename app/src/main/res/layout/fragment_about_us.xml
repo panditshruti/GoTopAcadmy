@@ -52,13 +52,22 @@
                 android:id="@+id/pracharmeapp"
                 android:src="@drawable/myappcl"
                 />
-   <com.ortiz.touchview.TouchImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-       android:id="@+id/devno"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/black"
+                >
 
+
+            <com.ortiz.touchview.TouchImageView
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                 android:id="@+id/devno"
                 android:src="@drawable/appprachar"
                 />
-
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+
