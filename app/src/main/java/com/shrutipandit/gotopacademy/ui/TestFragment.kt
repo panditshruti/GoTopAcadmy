@@ -78,7 +78,7 @@ class TestFragment : Fragment() {
             Toast.makeText(requireContext(), "Exam Added", Toast.LENGTH_SHORT).show()
         }
         binding.rspay.setOnClickListener {
-            val link = "https://wa.me/+7739717389"
+            val link = "https://chat.whatsapp.com/FtEWyuuPqU69pKe48VUS21"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
         }

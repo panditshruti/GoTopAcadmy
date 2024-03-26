@@ -1,6 +1,8 @@
 package com.shrutipandit.gotopacademy.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +32,12 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNoticeBinding.bind(view)
 
+
+        binding.linknewsNotice.setOnClickListener {
+            val link = "https://chat.whatsapp.com/BDe9OQOiiUmAJ3uvrQRjpz"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+            startActivity(intent)
+        }
 
         db = FirebaseDatabase.getInstance().reference.child("Notice")
         arrayList = arrayListOf()

@@ -1,6 +1,8 @@
 package com.shrutipandit.gotopacademy.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -27,6 +29,12 @@ class StanzaFragment : Fragment(R.layout.fragment_stanza) {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             binding = FragmentStanzaBinding.bind(view)
+
+            binding.linkstanja.setOnClickListener {
+                val link = "https://chat.whatsapp.com/FTi5LdEMFnGDD5vU23KH7L"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                startActivity(intent)
+            }
 
             db = FirebaseDatabase.getInstance().reference.child("Stanza")
             arrayList = arrayListOf()

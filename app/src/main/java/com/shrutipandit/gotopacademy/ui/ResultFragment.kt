@@ -1,6 +1,8 @@
 package com.shrutipandit.gotopacademy.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -28,6 +30,15 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentResultBinding.bind(view)
+
+
+        binding.linkresult.setOnClickListener {
+            val link = "https://chat.whatsapp.com/EmXQA2FsAwsC7oQC4ucTqo"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+            startActivity(intent)
+        }
+
+
 
         db = FirebaseDatabase.getInstance().reference.child("Result")
         arrayList = arrayListOf()

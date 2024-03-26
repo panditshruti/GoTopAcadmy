@@ -1,6 +1,8 @@
 package com.shrutipandit.gotopacademy.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -30,8 +32,14 @@ class BookFragment : Fragment(R.layout.fragment_book) {
         super.onViewCreated(view, savedInstanceState)
                 binding = FragmentBookBinding.bind(view)
 
+        binding.linkbookDpp.setOnClickListener {
+            val link = "https://chat.whatsapp.com/GnB5WQttBSwCJmaGVweq7f"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+            startActivity(intent)
+        }
 
-                db = FirebaseDatabase.getInstance().reference.child("Book")
+
+        db = FirebaseDatabase.getInstance().reference.child("Book")
                 arrayList = arrayListOf()
                 noticeAdapter = NoticeAdapterN(arrayList, requireContext())
                 binding.recyclerview.adapter = noticeAdapter

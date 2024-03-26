@@ -19,11 +19,12 @@ class FaqFragment : Fragment(R.layout.fragment_faq) {
         binding = FragmentFaqBinding.bind(view)
 
 
-        binding.linkwatsapp.setOnClickListener {
-            val link = "https://chat.whatsapp.com/FTi5LdEMFnGDD5vU23KH7L"
+        binding.linkwatsapFaq.setOnClickListener {
+            val link = "https://chat.whatsapp.com/ITlj9NwtP4o9S2FcNNsNlx"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
         }
+
 
 
 
