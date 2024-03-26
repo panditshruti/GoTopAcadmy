@@ -18,16 +18,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var viewPager: ViewPager
     private lateinit var imageSliderAdapter: ImageSliderAdapter
     private val images = intArrayOf(
-        R.drawable.img2,
-        R.drawable.img1,
+
         R.drawable.logogotop,
-        R.drawable.pred,
-        R.drawable.pgreen
+        R.drawable.slidede1,
+        R.drawable.pampletde2,
+        R.drawable.slidepade3,
+
+
     )
     // Timer and handler for auto-scrolling
     private var currentPage = 0
-    private val DELAY_MS: Long = 6000 // Delay in milliseconds before the next page is shown.
-    private val PERIOD_MS: Long = 6000 // Interval time to repeat.
+    private val DELAY_MS: Long = 4000 // Delay in milliseconds before the next page is shown.
+    private val PERIOD_MS: Long = 4000 // Interval time to repeat.
 
     private val handler = Handler(Looper.getMainLooper())
     private val update = Runnable {

@@ -110,5 +110,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(shareIntent, "Share App Link"))
     }
 
-
 }
