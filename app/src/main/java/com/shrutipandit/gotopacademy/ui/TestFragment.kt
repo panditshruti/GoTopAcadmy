@@ -239,6 +239,7 @@ class TestFragment : Fragment() {
 
                             // Hide ProgressDialog when upload is successful
                             progressDialog.dismiss()
+                            Toast.makeText(requireContext(), "Submitted successfully", Toast.LENGTH_SHORT).show()
 
                             // Reset form fields and image selection
                             binding.name.text?.clear()

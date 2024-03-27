@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/strok"
+                android:background="@drawable/togr"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -40,8 +40,8 @@
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:text="To See:-"
-                    android:textColor="#FF0000"
-                    android:textSize="17dp"
+                    android:textColor="#FFE500"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="Open Link:-"
+                    android:text="Open Link......"
                     android:textColor="@color/purple_700"
                     android:textSize="15dp" />
 
