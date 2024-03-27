@@ -75,7 +75,7 @@
             android:id="@+id/gmail"
             android:drawableStart="@drawable/baseline_email_24"
             android:drawablePadding="8dp"
-            android:text="Open Email:-"
+            android:text="Open Email......"
             android:textColor="@color/purple_700"
             android:layout_gravity="start" />
     </LinearLayout>

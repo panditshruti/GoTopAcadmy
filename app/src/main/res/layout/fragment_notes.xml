@@ -91,7 +91,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/rspaynote"
-                android:text="Open link:-"
+                android:text="Open Link......"
                 android:textColor="@color/purple_700"
                 />
 

@@ -42,7 +42,7 @@
                android:textSize="15dp"
                 android:id="@+id/linkTranslator"
                 android:layout_margin="10dp"
-                android:text="Open Link:-"
+                android:text="Open Link......"
                 />
 
         </LinearLayout>
@@ -84,7 +84,7 @@
                android:textSize="15dp"
                 android:id="@+id/vacancySearch"
                 android:layout_margin="10dp"
-                android:text="Open Link:-"
+                android:text="Open Link......"
                 />
 
         </LinearLayout>

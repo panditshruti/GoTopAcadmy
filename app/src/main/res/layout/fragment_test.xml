@@ -246,7 +246,7 @@
                             android:id="@+id/rspay"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:text="Open Link:-"
+                            android:text="Open Link......"
                               android:textColor="@color/purple_700"
                             />
 

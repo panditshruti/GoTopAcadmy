@@ -56,7 +56,7 @@
                 android:textSize="15dp"
                 android:id="@+id/linkwatsapFaq"
                 android:layout_margin="10dp"
-                android:text="Open Link:-"
+                android:text="Open Link......"
                 />
         </LinearLayout>
         </LinearLayout>
