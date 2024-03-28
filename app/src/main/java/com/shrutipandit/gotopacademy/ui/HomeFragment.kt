@@ -19,7 +19,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var imageSliderAdapter: ImageSliderAdapter
     private val images = intArrayOf(
 
-        R.drawable.logogotop,
+        R.drawable.gotoppmpet,
         R.drawable.slidede1,
         R.drawable.pampletde2,
         R.drawable.slidepade3,

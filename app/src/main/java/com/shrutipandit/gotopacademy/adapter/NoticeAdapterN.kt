@@ -65,12 +65,13 @@ class NoticeAdapterN(
 
         // Set link
         if (notice.link != "") {
+            holder.link.text = notice.link
 
             // Open link in a browser
-            holder.link.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(notice.link))
-                context.startActivity(intent)
-            }
+//            holder.link.setOnClickListener {
+//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(notice.link))
+//                context.startActivity(intent)
+//            }
         } else {
             holder.link.visibility = View.GONE
         }

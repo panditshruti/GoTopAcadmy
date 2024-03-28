@@ -19,7 +19,7 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNotesBinding.bind(view)
 
-        binding.rspaynote.setOnClickListener {
+        binding.linkwatsapnotes.setOnClickListener {
             val link = "https://wa.me/+7739717389"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
