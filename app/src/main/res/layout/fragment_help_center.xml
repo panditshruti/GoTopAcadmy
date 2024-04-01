@@ -34,6 +34,40 @@
             android:textColor="#635900"
             android:textSize="17dp"
             android:textStyle="bold" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/youtube"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        />
+
+    <TextView
+        android:id="@+id/videoYoubtube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:text="https://youtu.be/71eXV9st6x8"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:textColor="@color/purple_700"
+        android:textSize="15dp" />
+
+
+
+
+</LinearLayout>
+
+
+
     </LinearLayout>
     <!-- Second LinearLayout with contact details -->
     <LinearLayout

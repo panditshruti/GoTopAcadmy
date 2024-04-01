@@ -32,6 +32,12 @@ class HelpCenterFragment : Fragment(R.layout.fragment_help_center) {
             dialPhoneNumber(phoneNumber)
             copyToClipboard(phoneNumber)
         }
+
+        binding.videoYoubtube.setOnClickListener {
+            val link = "https://youtu.be/71eXV9st6x8"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+            startActivity(intent)
+        }
     }
 
     private fun dialPhoneNumber(phoneNumber: String) {
