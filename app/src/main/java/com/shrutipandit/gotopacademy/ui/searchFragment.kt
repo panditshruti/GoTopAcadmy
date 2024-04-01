@@ -24,7 +24,6 @@ import com.shrutipandit.gotopacademy.db.NoticeItem
 
 class searchFragment : Fragment(R.layout.fragment_search) {
         private lateinit var binding: FragmentSearchBinding
-
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             binding = FragmentSearchBinding.bind(view)
@@ -34,12 +33,10 @@ class searchFragment : Fragment(R.layout.fragment_search) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                 startActivity(intent)
             }
-
-          binding.vacancySearch.setOnClickListener {
-                val link = "https://www.sarkariresult.com/"
+            binding.vacancySearch.setOnClickListener {
+                val link = "https://chat.whatsapp.com/KcmFYRCkmZ22Avoc7uhsjO"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                 startActivity(intent)
             }
-
         }
     }

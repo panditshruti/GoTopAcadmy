@@ -20,6 +20,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val images = intArrayOf(
 
         R.drawable.gotoppmpet,
+        R.drawable.gotop2,
+        R.drawable.goto3,
+        R.drawable.goto4,
         R.drawable.slidede1,
         R.drawable.pampletde2,
         R.drawable.slidepade3,
@@ -75,6 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val action = HomeFragmentDirections.actionHomeFragmentToNewsFragment2()
             findNavController().navigate(action)
         }
+
         binding.book.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToBookFragment()
             findNavController().navigate(action)
@@ -95,10 +99,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val action = HomeFragmentDirections.actionHomeFragmentToNotesFragment()
             findNavController().navigate(action)
         }
+
         binding.faq.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToFaqFragment()
             findNavController().navigate(action)
-        }
 
+        }
     }
 }

@@ -74,7 +74,7 @@
                 android:textSize="17dp"
                 android:gravity="center"
                 android:layout_margin="10dp"
-                android:text="Vacancy Search"
+                android:text="Vacancy News"
                 />
             <TextView
                 android:layout_width="match_parent"

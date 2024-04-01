@@ -84,7 +84,7 @@
                                 android:id="@+id/name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawableEnd="@drawable/baseline_person_3_24"
+                                android:drawableEnd="@drawable/baseline_person_24"
                                 android:hint="@string/enter_your_name"
                                 android:inputType="text"
                                 android:padding="10dp" />
@@ -105,7 +105,7 @@
                                 android:id="@+id/phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawableEnd="@drawable/baseline_settings_phone_24"
+                                android:drawableEnd="@drawable/baseline_call_24"
                                 android:hint="Enter Your Phone No."
                                 android:inputType="number"
                                 android:padding="10dp" />
@@ -127,7 +127,7 @@
                                 android:id="@+id/email"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawableEnd="@drawable/baseline_mark_email_unread_24"
+                                android:drawableEnd="@drawable/baseline_email_24"
                                 android:hint="@string/enter_your_email_i_d"
                                 android:inputType="text"
                                 android:padding="10dp" />

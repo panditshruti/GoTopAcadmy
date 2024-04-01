@@ -94,7 +94,7 @@
                     android:id="@+id/viewPager"
                     android:padding="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="220dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
